@@ -1,14 +1,15 @@
 import React from 'react';
-import './App.css';
+
+import Game from "./components/Game";
+
+import './App.scss';
 
 const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        react-game
-      </header>
-    </div>
-  )
+	return (
+		<div className="App">
+			<Game/>
+		</div>
+	)
 };
 
 export default App;
