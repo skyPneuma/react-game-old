@@ -21,21 +21,35 @@
 .buttons {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
 
   button {
-    background: transparent;
+    font-family: 'Akaya Telivigala', cursive;
+    color: white;
     font-size: 20px;
     margin-bottom: 5px;
     padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #282c34;
+    border: 1px solid white;
+    opacity: .5;
+
+    &:hover {
+      opacity: .9;
+      transition: .6s all ease;
+    }
   }
 }
 
-.buttons_bottom {
-  display: flex;
-  flex-wrap: wrap;
+.buttons_bottom button {
+  width: 40%;
+  min-height: 60px;
 
-  button {
-    width: 50%;
+  &:nth-child(2n+1) {
+    margin-right: 5px;
   }
 }
 

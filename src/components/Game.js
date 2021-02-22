@@ -4,15 +4,13 @@ import CountryField from "./CountryField";
 import styles from './styles.scss';
 
 const Game = () => {
+	const randomCountry = Math.floor(Math.random() * countries.length);
 	const [country, setCountry] = useState({
 		"value": "AF",
 		"label": "Afghanistan"
 	});
-	
-	const getRandomCountry = () => {
-		let rand = Math.floor(Math.random() * countries.length);
-		return setCountry(countries[rand]);
-	};
+
+	const getRandomCountry = () => setCountry(countries[randomCountry]);
 	
 	return <div className="wrapper">
 		<div className="blur">
@@ -25,10 +23,10 @@ const Game = () => {
 				<CountryField country={country}/>
 			</div>
 			<div className="buttons buttons_bottom">
-				<button className="btn__veriant">Variant 1</button>
-				<button className="btn__veriant">Variant 2</button>
-				<button className="btn__veriant">Variant 3</button>
-				<button className="btn__veriant">Variant 4</button>
+				<button className="btn__answer">VariantVariant 1</button>
+				<button className="btn__answer">VariantVariantVariant Variant 2</button>
+				<button className="btn__answer">Variant 3</button>
+				<button className="btn__answer">Variant 4</button>
 			</div>
 		</div>
 	</div>;
