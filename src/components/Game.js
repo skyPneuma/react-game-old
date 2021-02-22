@@ -9,23 +9,21 @@ const Game = () => {
 		"value": "AF",
 		"label": "Afghanistan"
 	});
-
+	
 	const getRandomCountry = () => setCountry(countries[randomCountry]);
 	
 	return <div className="wrapper">
-		<div className="blur">
+		<div className="relative">
 			<div className="buttons buttons_top">
-				<button className="btn__restart">Restart game</button>
-				<button className="btn__hint">Hint</button>
-				<button className="btn__skip" onClick={() => getRandomCountry()}>Skip round</button>
+				<button>Restart game</button>
+				<button>Hint</button>
+				<button onClick={() => getRandomCountry()}>Skip round</button>
 			</div>
-			<div>
-				<CountryField country={country}/>
-			</div>
+			<CountryField country={country}/>
 			<div className="buttons buttons_bottom">
-				<button className="btn__answer">VariantVariant 1</button>
-				<button className="btn__answer">VariantVariantVariant Variant 2</button>
-				<button className="btn__answer">Variant 3</button>
+				<button className="btn__answer">Variant Variant 1</button>
+				<button className="btn__answer">Variant Variant Variant Variant 2</button>
+				<button className="btn__answer">Variant VariantVariant 3</button>
 				<button className="btn__answer">Variant 4</button>
 			</div>
 		</div>

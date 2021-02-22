@@ -1,19 +1,11 @@
-.wrapper {
-  background: #282c34 url(../img/background.jpg) no-repeat center center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.relative {
+  position: relative;
 }
 
-.blur {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(25px);
+.wrapper {
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -29,7 +21,6 @@
     font-family: 'Akaya Telivigala', cursive;
     color: white;
     font-size: 20px;
-    margin-bottom: 5px;
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
@@ -44,25 +35,48 @@
   }
 }
 
-.buttons_bottom button {
-  width: 40%;
-  min-height: 60px;
+.buttons_top {
+  position: absolute;
+  top: 33px;
+  left: 20px;
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
 
-  &:nth-child(2n+1) {
-    margin-right: 5px;
+  button {
+    min-height: 40px;
+    max-height: 40px;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}
+
+.buttons_bottom {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+
+  button {
+    width: 45%;
+    min-height: 40px;
+    max-height: 40px;
+    margin-bottom: 5px;
+
+    &:nth-child(2n+1) {
+      margin-right: 5px;
+    }
   }
 }
 
 .country_field {
-  opacity: .7;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .country_img {
-  margin-bottom: 50px;
-  border: 3px solid gray;
-  width: 60%;
-  height: 40%;
+  width: 100%;
 }
+

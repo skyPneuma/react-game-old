@@ -11,10 +11,10 @@ export const countries = [
 		"value": "DZ",
 		"label": "Algeria"
 	},
-	{
+	/*{
 		"value": "AS",
 		"label": "American Samoa"
-	},
+	},*/
 	{
 		"value": "AD",
 		"label": "Andorra"
@@ -23,14 +23,14 @@ export const countries = [
 		"value": "AO",
 		"label": "Angola"
 	},
-	{
+	/*{
 		"value": "AI",
 		"label": "Anguilla"
 	},
 	{
 		"value": "AQ",
 		"label": "Antarctica"
-	},
+	},*/
 	{
 		"value": "AG",
 		"label": "Antigua & Barbuda"
@@ -43,10 +43,10 @@ export const countries = [
 		"value": "AM",
 		"label": "Armenia"
 	},
-	{
+	/*{
 		"value": "AW",
 		"label": "Aruba"
-	},
+	},*/
 	{
 		"value": "AU",
 		"label": "Australia"
@@ -91,10 +91,10 @@ export const countries = [
 		"value": "BJ",
 		"label": "Benin"
 	},
-	{
+	/*{
 		"value": "BM",
 		"label": "Bermuda"
-	},
+	},*/
 	{
 		"value": "BT",
 		"label": "Bhutan"
@@ -111,22 +111,22 @@ export const countries = [
 		"value": "BW",
 		"label": "Botswana"
 	},
-	{
+	/*{
 		"value": "BV",
 		"label": "Bouvet Island"
-	},
+	},*/
 	{
 		"value": "BR",
 		"label": "Brazil"
 	},
-	{
+	/*{
 		"value": "IO",
 		"label": "British Indian Ocean Territory"
 	},
 	{
 		"value": "VG",
 		"label": "British Virgin Islands"
-	},
+	},*/
 	{
 		"value": "BN",
 		"label": "Brunei"
@@ -159,14 +159,14 @@ export const countries = [
 		"value": "CV",
 		"label": "Cape Verde"
 	},
-	{
+	/*{
 		"value": "BQ",
 		"label": "Caribbean Netherlands"
 	},
 	{
 		"value": "KY",
 		"label": "Cayman Islands"
-	},
+	},*/
 	{
 		"value": "CF",
 		"label": "Central African Republic"
@@ -183,14 +183,14 @@ export const countries = [
 		"value": "CN",
 		"label": "China"
 	},
-	{
+	/*{
 		"value": "CX",
 		"label": "Christmas Island"
 	},
 	{
 		"value": "CC",
 		"label": "Cocos (Keeling) Islands"
-	},
+	},*/
 	{
 		"value": "CO",
 		"label": "Colombia"
@@ -207,10 +207,10 @@ export const countries = [
 		"value": "CD",
 		"label": "Congo - Kinshasa"
 	},
-	{
+	/*{
 		"value": "CK",
 		"label": "Cook Islands"
-	},
+	},*/
 	{
 		"value": "CR",
 		"label": "Costa Rica"
@@ -223,17 +223,17 @@ export const countries = [
 		"value": "CU",
 		"label": "Cuba"
 	},
-	{
+	/*{
 		"value": "CW",
 		"label": "Curaçao"
-	},
+	},*/
 	{
 		"value": "CY",
 		"label": "Cyprus"
 	},
 	{
 		"value": "CZ",
-		"label": "Czechia"
+		"label": "Czech Republic"
 	},
 	{
 		"value": "CI",
@@ -265,7 +265,7 @@ export const countries = [
 	},
 	{
 		"value": "SV",
-		"label": "El Salvador"
+		"label": "Salvador"
 	},
 	{
 		"value": "GQ",
@@ -279,22 +279,22 @@ export const countries = [
 		"value": "EE",
 		"label": "Estonia"
 	},
-	{
+	/*{
 		"value": "SZ",
 		"label": "Eswatini"
-	},
+	},*/
 	{
 		"value": "ET",
 		"label": "Ethiopia"
 	},
-	{
+	/*{
 		"value": "FK",
 		"label": "Falkland Islands"
 	},
 	{
 		"value": "FO",
 		"label": "Faroe Islands"
-	},
+	},*/
 	{
 		"value": "FJ",
 		"label": "Fiji"
@@ -307,7 +307,7 @@ export const countries = [
 		"value": "FR",
 		"label": "France"
 	},
-	{
+	/*{
 		"value": "GF",
 		"label": "French Guiana"
 	},
@@ -318,7 +318,7 @@ export const countries = [
 	{
 		"value": "TF",
 		"label": "French Southern Territories"
-	},
+	},*/
 	{
 		"value": "GA",
 		"label": "Gabon"
@@ -339,38 +339,38 @@ export const countries = [
 		"value": "GH",
 		"label": "Ghana"
 	},
-	{
+	/*{
 		"value": "GI",
 		"label": "Gibraltar"
-	},
+	},*/
 	{
 		"value": "GR",
 		"label": "Greece"
 	},
-	{
+	/*{
 		"value": "GL",
 		"label": "Greenland"
-	},
+	},*/
 	{
 		"value": "GD",
 		"label": "Grenada"
 	},
-	{
+	/*{
 		"value": "GP",
 		"label": "Guadeloupe"
 	},
 	{
 		"value": "GU",
 		"label": "Guam"
-	},
+	},*/
 	{
 		"value": "GT",
 		"label": "Guatemala"
 	},
-	{
+	/*{
 		"value": "GG",
 		"label": "Guernsey"
-	},
+	},*/
 	{
 		"value": "GN",
 		"label": "Guinea"
@@ -387,18 +387,18 @@ export const countries = [
 		"value": "HT",
 		"label": "Haiti"
 	},
-	{
+	/*{
 		"value": "HM",
 		"label": "Heard & McDonald Islands"
-	},
+	},*/
 	{
 		"value": "HN",
 		"label": "Honduras"
 	},
-	{
+	/*{
 		"value": "HK",
 		"label": "Hong Kong SAR China"
-	},
+	},*/
 	{
 		"value": "HU",
 		"label": "Hungary"
@@ -427,10 +427,10 @@ export const countries = [
 		"value": "IE",
 		"label": "Ireland"
 	},
-	{
+	/*{
 		"value": "IM",
 		"label": "Isle of Man"
-	},
+	},*/
 	{
 		"value": "IL",
 		"label": "Israel"
@@ -447,10 +447,10 @@ export const countries = [
 		"value": "JP",
 		"label": "Japan"
 	},
-	{
+	/*{
 		"value": "JE",
 		"label": "Jersey"
-	},
+	},*/
 	{
 		"value": "JO",
 		"label": "Jordan"
@@ -463,18 +463,18 @@ export const countries = [
 		"value": "KE",
 		"label": "Kenya"
 	},
-	{
+	/*{
 		"value": "KI",
 		"label": "Kiribati"
-	},
+	},*/
 	{
 		"value": "KW",
 		"label": "Kuwait"
 	},
-	{
+	/*{
 		"value": "KG",
 		"label": "Kyrgyzstan"
-	},
+	},*/
 	{
 		"value": "LA",
 		"label": "Laos"
@@ -511,10 +511,10 @@ export const countries = [
 		"value": "LU",
 		"label": "Luxembourg"
 	},
-	{
+	/*{
 		"value": "MO",
 		"label": "Macao SAR China"
-	},
+	},*/
 	{
 		"value": "MG",
 		"label": "Madagascar"
@@ -539,14 +539,14 @@ export const countries = [
 		"value": "MT",
 		"label": "Malta"
 	},
-	{
+	/*{
 		"value": "MH",
 		"label": "Marshall Islands"
 	},
 	{
 		"value": "MQ",
 		"label": "Martinique"
-	},
+	},*/
 	{
 		"value": "MR",
 		"label": "Mauritania"
@@ -555,10 +555,10 @@ export const countries = [
 		"value": "MU",
 		"label": "Mauritius"
 	},
-	{
+	/*{
 		"value": "YT",
 		"label": "Mayotte"
-	},
+	},*/
 	{
 		"value": "MX",
 		"label": "Mexico"
@@ -583,10 +583,10 @@ export const countries = [
 		"value": "ME",
 		"label": "Montenegro"
 	},
-	{
+	/*{
 		"value": "MS",
 		"label": "Montserrat"
-	},
+	},*/
 	{
 		"value": "MA",
 		"label": "Morocco"
@@ -599,10 +599,10 @@ export const countries = [
 		"value": "MM",
 		"label": "Myanmar (Burma)"
 	},
-	{
+	/*{
 		"value": "NA",
 		"label": "Namibia"
-	},
+	},*/
 	{
 		"value": "NR",
 		"label": "Nauru"
@@ -615,10 +615,10 @@ export const countries = [
 		"value": "NL",
 		"label": "Netherlands"
 	},
-	{
+	/*{
 		"value": "NC",
 		"label": "New Caledonia"
-	},
+	},*/
 	{
 		"value": "NZ",
 		"label": "New Zealand"
@@ -635,14 +635,14 @@ export const countries = [
 		"value": "NG",
 		"label": "Nigeria"
 	},
-	{
+	/*{
 		"value": "NU",
 		"label": "Niue"
 	},
 	{
 		"value": "NF",
 		"label": "Norfolk Island"
-	},
+	},*/
 	{
 		"value": "KP",
 		"label": "North Korea"
@@ -651,10 +651,10 @@ export const countries = [
 		"value": "MK",
 		"label": "North Macedonia"
 	},
-	{
+	/*{
 		"value": "MP",
 		"label": "Northern Mariana Islands"
-	},
+	},*/
 	{
 		"value": "NO",
 		"label": "Norway"
@@ -671,10 +671,10 @@ export const countries = [
 		"value": "PW",
 		"label": "Palau"
 	},
-	{
+	/*{
 		"value": "PS",
 		"label": "Palestinian Territories"
-	},
+	},*/
 	{
 		"value": "PA",
 		"label": "Panama"
@@ -695,10 +695,10 @@ export const countries = [
 		"value": "PH",
 		"label": "Philippines"
 	},
-	{
+	/*{
 		"value": "PN",
 		"label": "Pitcairn Islands"
-	},
+	},*/
 	{
 		"value": "PL",
 		"label": "Poland"
@@ -707,10 +707,10 @@ export const countries = [
 		"value": "PT",
 		"label": "Portugal"
 	},
-	{
+	/*{
 		"value": "PR",
 		"label": "Puerto Rico"
-	},
+	},*/
 	{
 		"value": "QA",
 		"label": "Qatar"
@@ -727,10 +727,10 @@ export const countries = [
 		"value": "RW",
 		"label": "Rwanda"
 	},
-	{
+	/*{
 		"value": "RE",
 		"label": "Réunion"
-	},
+	},*/
 	{
 		"value": "WS",
 		"label": "Samoa"
@@ -763,10 +763,10 @@ export const countries = [
 		"value": "SG",
 		"label": "Singapore"
 	},
-	{
+	/*{
 		"value": "SX",
 		"label": "Sint Maarten"
-	},
+	},*/
 	{
 		"value": "SK",
 		"label": "Slovakia"
@@ -787,10 +787,10 @@ export const countries = [
 		"value": "ZA",
 		"label": "South Africa"
 	},
-	{
+	/*{
 		"value": "GS",
 		"label": "South Georgia & South Sandwich Islands"
-	},
+	},*/
 	{
 		"value": "KR",
 		"label": "South Korea"
@@ -807,14 +807,14 @@ export const countries = [
 		"value": "LK",
 		"label": "Sri Lanka"
 	},
-	{
+	/*{
 		"value": "BL",
 		"label": "St. Barthélemy"
 	},
 	{
 		"value": "SH",
 		"label": "St. Helena"
-	},
+	},*/
 	{
 		"value": "KN",
 		"label": "St. Kitts & Nevis"
@@ -823,14 +823,14 @@ export const countries = [
 		"value": "LC",
 		"label": "St. Lucia"
 	},
-	{
+	/*{
 		"value": "MF",
 		"label": "St. Martin"
 	},
 	{
 		"value": "PM",
 		"label": "St. Pierre & Miquelon"
-	},
+	},*/
 	{
 		"value": "VC",
 		"label": "St. Vincent & Grenadines"
@@ -843,10 +843,10 @@ export const countries = [
 		"value": "SR",
 		"label": "Suriname"
 	},
-	{
+	/*{
 		"value": "SJ",
 		"label": "Svalbard & Jan Mayen"
-	},
+	},*/
 	{
 		"value": "SE",
 		"label": "Sweden"
@@ -863,10 +863,10 @@ export const countries = [
 		"value": "ST",
 		"label": "São Tomé & Príncipe"
 	},
-	{
+	/*{
 		"value": "TW",
 		"label": "Taiwan"
-	},
+	},*/
 	{
 		"value": "TJ",
 		"label": "Tajikistan"
@@ -879,18 +879,18 @@ export const countries = [
 		"value": "TH",
 		"label": "Thailand"
 	},
-	{
+	/*{
 		"value": "TL",
 		"label": "Timor-Leste"
-	},
+	},*/
 	{
 		"value": "TG",
 		"label": "Togo"
 	},
-	{
+	/*{
 		"value": "TK",
 		"label": "Tokelau"
-	},
+	},*/
 	{
 		"value": "TO",
 		"label": "Tonga"
@@ -911,30 +911,30 @@ export const countries = [
 		"value": "TM",
 		"label": "Turkmenistan"
 	},
-	{
+	/*{
 		"value": "TC",
 		"label": "Turks & Caicos Islands"
-	},
+	},*/
 	{
 		"value": "TV",
 		"label": "Tuvalu"
 	},
-	{
+	/*{
 		"value": "UM",
 		"label": "U.S. Outlying Islands"
 	},
 	{
 		"value": "VI",
 		"label": "U.S. Virgin Islands"
-	},
+	},*/
 	{
 		"value": "UG",
 		"label": "Uganda"
 	},
-	{
+	/*{
 		"value": "UA",
 		"label": "Ukraine"
-	},
+	},*/
 	{
 		"value": "AE",
 		"label": "United Arab Emirates"
@@ -959,10 +959,10 @@ export const countries = [
 		"value": "VU",
 		"label": "Vanuatu"
 	},
-	{
+	/*{
 		"value": "VA",
 		"label": "Vatican City"
-	},
+	},*/
 	{
 		"value": "VE",
 		"label": "Venezuela"
@@ -971,14 +971,14 @@ export const countries = [
 		"value": "VN",
 		"label": "Vietnam"
 	},
-	{
+	/*{
 		"value": "WF",
 		"label": "Wallis & Futuna"
 	},
 	{
 		"value": "EH",
 		"label": "Western Sahara"
-	},
+	},*/
 	{
 		"value": "YE",
 		"label": "Yemen"
@@ -991,8 +991,8 @@ export const countries = [
 		"value": "ZW",
 		"label": "Zimbabwe"
 	},
-	{
+	/*{
 		"value": "AX",
 		"label": "Åland Islands"
-	}
-]
+	}*/
+];
