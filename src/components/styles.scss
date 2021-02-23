@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.start_btn {
+  text-decoration: none;
+}
+
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +39,7 @@
   }
 }
 
-.buttons_top {
+.top_buttons__box {
   position: absolute;
   top: 33px;
   left: 20px;
@@ -43,7 +47,7 @@
   width: 95%;
   justify-content: space-between;
 
-  button {
+  .top__btn {
     min-height: 40px;
     max-height: 40px;
 

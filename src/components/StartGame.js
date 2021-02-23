@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import Game from "./Game";
+import React from 'react';
+import { Link } from "react-router-dom";
 
 const StartGame = () => {
-	const startGame = () => <Game/>;
 	return <div className="wrapper">
-		<div className="blur">
-			<div className="buttons_box">
-				<button className="btn__start" onClick={() => startGame()}>Start game</button>
+		<Link className="start_btn" to="/game">
+			<div className="buttons">
+				<button>Start game</button>
 			</div>
-		</div>
+		</Link>
 	</div>;
 };
 

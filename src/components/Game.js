@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { countries } from "../countries";
-import CountryField from "./CountryField";
 import styles from './styles.scss';
 
 const Game = () => {
-	const randomCountry = Math.floor(Math.random() * countries.length);
-	const [country, setCountry] = useState({
-		"value": "AF",
-		"label": "Afghanistan"
-	});
+	const getRandomCountry = () => Math.floor(Math.random() * countries.length);
+	const [answers, setAnswers] = useState([]);
+	const [country, setCountry] = useState(countries[getRandomCountry()]);
 	
-	const getRandomCountry = () => setCountry(countries[randomCountry]);
+	const setRandomAnswers = () => {
+		let arr = [];
+		for (let i = arr.length; i < 4; i++) arr.push(countries[getRandomCountry()]);
+		return setAnswers(arr);
+	};
 	
+	const nextLevel = () => {
+		setRandomAnswers();
+		setCountry(countries[getRandomCountry()]);
+	};
+	console.log('country', country);
 	return <div className="wrapper">
 		<div className="content_box">
-			<div className="buttons buttons_top">
-				<button>Restart game</button>
-				<button>Hint</button>
-				<button onClick={() => getRandomCountry()}>Skip round</button>
+			<div className="buttons top_buttons__box">
+				<Link to="/">
+					<button className="top__btn">Restart game</button>
+				</Link>
+				<button className="top__btn">Hint</button>
+				<button className="top__btn" onClick={() => nextLevel()}>Skip round</button>
 			</div>
-			<CountryField country={country}/>
+			<div className="country_field">
+				<img className="country_img" src={process.env.PUBLIC_URL + `./img/countries/${country.value}.png`} alt=""/>
+			</div>
 			<div className="buttons buttons_bottom">
-				<button className="btn__answer">Variant Variant 1</button>
-				<button className="btn__answer">Variant Variant Variant Variant 2</button>
-				<button className="btn__answer">Variant VariantVariant 3</button>
-				<button className="btn__answer">Variant 4</button>
+				{answers.map((item, index) => <button key={index} className="btn__answer">{item.label}</button>)}
 			</div>
 		</div>
 	</div>;
