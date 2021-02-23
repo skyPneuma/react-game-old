@@ -13,7 +13,7 @@ const Game = () => {
 	const getRandomCountry = () => setCountry(countries[randomCountry]);
 	
 	return <div className="wrapper">
-		<div className="relative">
+		<div className="content_box">
 			<div className="buttons buttons_top">
 				<button>Restart game</button>
 				<button>Hint</button>
