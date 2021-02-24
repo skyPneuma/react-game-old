@@ -1,18 +1,18 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React, { useState } from "react";
 import './App.scss';
 import Game from "./components/Game";
-import StartGame from "./components/StartGame";
 
 const App = () => {
+	const [currentPage, setCurrentPage] = useState('start');
+
 	return (
-		<BrowserRouter>
-			<div className="App">
-				<Route exact path="/" component={StartGame}/>
-				<Route exact path="/game" component={Game}/>
+		currentPage === 'start'
+		? <div className="wrapper">
+			<div className="buttons">
+				<button onClick={() => setCurrentPage('game')}>Start game</button>
 			</div>
-		</BrowserRouter>
-	
+		</div>
+		: <Game />
 	)
 };
 
