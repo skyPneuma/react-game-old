@@ -19,14 +19,14 @@
 
   button {
     font-family: 'Akaya Telivigala', cursive;
-    color: white;
+    color: #282c34;
     font-size: 20px;
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
-    background: #282c34;
+    //background: #282c34;
     border: 1px solid white;
-    opacity: .5;
+    opacity: .7;
 
     &:hover {
       opacity: .9;
@@ -78,5 +78,11 @@
 
 .country_img {
   width: 100%;
+}
+
+.disabled {
+  pointer-events: none;
+  color: #5d656e !important;
+  opacity: .5!important;
 }
 

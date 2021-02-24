@@ -28,7 +28,8 @@ const Game = () => {
 	
 	const nextLevel = () => {
 		setRandomAnswers();
-		setRightAnswer(Math.floor(Math.random() * 4))
+		setRightAnswer(Math.floor(Math.random() * 4));
+		setScores(scores - 1);
 	};
 	
 	const onChooseAnswer = index => {
@@ -43,8 +44,8 @@ const Game = () => {
 	};
 	
 	const restartGame = () => {
+		nextLevel();
 		setScores(0);
-		
 	};
 
 	return <div className="wrapper">
@@ -52,14 +53,16 @@ const Game = () => {
 			<div className="buttons top_buttons__box">
 				<button className="top__btn" onClick={() => restartGame()}>Restart game</button>
 				<span>{scores}</span>
-				<button className="top__btn">Hint</button>
-				<button className="top__btn" onClick={() => nextLevel()}>Skip round</button>
+				<button className={`top__btn ${scores >= 10 ? 'disabled' : null}`}>Hint</button>
+				<button className={`top__btn ${scores >= 10 ? 'disabled' : null}`} onClick={() => nextLevel()}>Skip round</button>
 			</div>
 			<div className="country_field">
 				<img className="country_img" src={process.env.PUBLIC_URL + `./img/countries/${answers[rightAnswer]?.value}.png`} alt=""/>
 			</div>
 			<div className="buttons buttons_bottom">
-				{answers.map((item, index) => <button onClick={() => onChooseAnswer(index)} key={index} className="btn__answer">{item.label}</button>)}
+				{answers.map((item, index) => <button onClick={() => onChooseAnswer(index)}
+				                                      key={index}
+				                                      className={`btn__answer ${scores >= 10 ? 'disabled' : null}`}>{item.label}</button>)}
 			</div>
 		</div>
 	</div>;
