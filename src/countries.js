@@ -15,7 +15,7 @@ export const countries = [
 		"value": "AD",
 		"label": "Andorra"
 	},
-	{
+	/*{
 		"value": "AO",
 		"label": "Angola"
 	},
@@ -355,10 +355,10 @@ export const countries = [
 		"value": "KW",
 		"label": "Kuwait"
 	},
-	/*{
+	/!*{
 		"value": "KG",
 		"label": "Kyrgyzstan"
-	},*/
+	},*!/
 	{
 		"value": "LA",
 		"label": "Laos"
@@ -463,10 +463,10 @@ export const countries = [
 		"value": "MM",
 		"label": "Myanmar (Burma)"
 	},
-	/*{
+	/!*{
 		"value": "NA",
 		"label": "Namibia"
-	},*/
+	},*!/
 	{
 		"value": "NR",
 		"label": "Nauru"
@@ -715,10 +715,10 @@ export const countries = [
 		"value": "UG",
 		"label": "Uganda"
 	},
-	/*{
+	/!*{
 		"value": "UA",
 		"label": "Ukraine"
-	},*/
+	},*!/
 	{
 		"value": "AE",
 		"label": "United Arab Emirates"
@@ -762,6 +762,6 @@ export const countries = [
 	{
 		"value": "ZW",
 		"label": "Zimbabwe"
-	}
+	}*/
 ];
 

@@ -16,6 +16,9 @@
   align-items: center;
   justify-content: center;
 
+  &__answer:focus {
+    outline: none;
+  }
 
   button {
     font-family: 'Akaya Telivigala', cursive;
@@ -30,7 +33,14 @@
 
     &:hover {
       opacity: .9;
-      transition: .6s all ease;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
@@ -83,6 +93,16 @@
 .disabled {
   pointer-events: none;
   color: #5d656e !important;
-  opacity: .5!important;
+  opacity: .5 !important;
 }
 
+.scores {
+  font-family: 'Akaya Telivigala', cursive;
+  font-size: 30px;
+  font-weight: 600;
+  color: #282c34;
+  opacity: .7;
+  position: absolute;
+  right: 20px;
+  top: 120px;
+}
