@@ -27,9 +27,9 @@
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
-    //background: #282c34;
-    border: 1px solid white;
+    border: none;
     opacity: .7;
+    user-select: none;
 
     &:hover {
       opacity: .9;
@@ -84,6 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .country_img {
@@ -105,4 +106,38 @@
   position: absolute;
   right: 20px;
   top: 120px;
+  user-select: none;
+}
+
+.sounds_icon_box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sounds_icon {
+  width: 40px;
+  height: 40px;
+  color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  opacity: .7;
+
+  &:first-child {
+    margin-right: 5px;
+  }
+  &:hover {
+    opacity: .9;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

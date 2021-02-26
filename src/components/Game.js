@@ -1,18 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useHotkeys } from "react-hotkeys-hook";
+import useSound from 'use-sound';
+import * as Icon from 'react-feather';
 import { countries } from "../countries";
+import button from '../media/sounds/button.mp3';
+import backgroundMusic from '../media/sounds/backgroundMusic.mp3';
+import SettingsPanel from "./SettingsPanel/SettingsPanel";
 import styles from './styles.scss';
 
 const Game = () => {
 	const getRandomCountry = () => Math.floor(Math.random() * countries.length);
-	
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [scores, setScores] = useState(0);
+	const [sounds, setSounds] = useState(true);
+	const [music, setMusic] = useState(true);
+	const musicRef = useRef();
+	
+	document.addEventListener('click', () => musicRef.current?.play());
+	
+	useEffect(() => {
+		if (musicRef.current) musicRef.current.volume = music ? +music : 0;
+	}, [music]);
 	
 	useEffect(() => {
 		let arr = [];
-		if (answers.length < 4){
+		if (answers.length < 4) {
 			for (let i = arr.length; i < 4; i++) arr.push(countries[getRandomCountry()]);
 			setAnswers(arr);
 			setRightAnswer(Math.floor(Math.random() * 4))
@@ -26,19 +39,21 @@ const Game = () => {
 		setRightAnswer(Math.floor(Math.random() * 4))
 	};
 	
-	const nextLevel = () => {
+	const nextLevel = prop => {
 		setRandomAnswers();
 		setRightAnswer(Math.floor(Math.random() * 4));
-		setScores(scores - 1);
+		prop && setScores(prev => prev - 1);
 	};
-	
+
 	const onChooseAnswer = index => {
-		if(rightAnswer === index) {
+		console.log(index);
+		if (rightAnswer === index) {
 			nextLevel();
-			setScores(scores + 2);
+			setScores(prev => prev + 1);
 			console.log('right answer')
-		} else {
-			setScores(scores - 1);
+		}
+		else {
+			setScores(prev => prev - 1);
 			console.log('wrong')
 		}
 	};
@@ -47,21 +62,55 @@ const Game = () => {
 		nextLevel();
 		setScores(0);
 	};
+	
+	const [clickSound] = useSound(sounds ? button : null, { volume: 0.25 });
+	
+	useHotkeys('1', () => onChooseAnswer(0));
+	useHotkeys('2', () => onChooseAnswer(1));
+	useHotkeys('3', () => onChooseAnswer(2));
+	useHotkeys('4', () => onChooseAnswer(3));
+	useHotkeys('s', () => nextLevel());
+	
 	return <div className="wrapper">
+		<SettingsPanel musicRef={musicRef}/>
+		<audio loop ref={musicRef} src={backgroundMusic} />
 		<div className="content_box">
 			<div className="buttons top_buttons__box">
-				<button className="top__btn" onClick={() => restartGame()}>Restart game</button>
-				<button className={`top__btn ${scores >= 10 ? 'disabled' : null}`}>Hint</button>
-				<button className={`top__btn ${scores >= 10 ? 'disabled' : null}`} onClick={() => nextLevel()}>Skip round</button>
+				<button className="top__btn" onClick={() => restartGame()} onMouseDown={clickSound}>
+					Restart game
+				</button>
+				<div className="sounds_icon_box">
+					<div className="sounds_icon" onClick={() => setMusic(!music)} onMouseDown={sounds ? clickSound : null}>
+						{music ? <Icon.Volume2/> : <Icon.VolumeX/>}
+					</div>
+					<div className="sounds_icon" onClick={() => setSounds(!sounds)} onMouseDown={sounds ? clickSound : null}>
+						{sounds ? <Icon.Bell/> : <Icon.BellOff/>}
+					</div>
+				</div>
+				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`} onMouseDown={clickSound}>
+					Hint
+				</button>
+				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+				        onMouseDown={clickSound}
+				        onClick={() => nextLevel('skip')}
+				>
+					Skip round
+				</button>
 			</div>
 			<span className="scores">{scores} /10</span>
 			<div className="country_field">
-				<img className="country_img" src={process.env.PUBLIC_URL + `./img/countries/${answers[rightAnswer]?.value}.png`} alt=""/>
+				<img className="country_img"
+				     src={process.env.PUBLIC_URL + `./img/countries/${answers[rightAnswer]?.value}.png`}
+				     alt=""/>
 			</div>
 			<div className="buttons buttons_bottom">
 				{answers.map((item, index) => <button onClick={() => onChooseAnswer(index)}
 				                                      key={index}
-				                                      className={`buttons__answer ${scores >= 10 ? 'disabled' : null}`}>{item.label}</button>)}
+				                                      onMouseDown={clickSound}
+				                                      className={`buttons__answer ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+				>
+					{item.label}
+				</button>)}
 			</div>
 		</div>
 	</div>;
