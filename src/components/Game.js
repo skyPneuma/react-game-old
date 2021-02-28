@@ -5,8 +5,8 @@ import * as Icon from 'react-feather';
 import { countries } from "../countries";
 import button from '../media/sounds/button.mp3';
 import backgroundMusic from '../media/sounds/backgroundMusic.mp3';
-import SettingsPanel from "./SettingsPanel/SettingsPanel";
-import styles from './styles.scss';
+import MusicSettingsPanel from "./MusicSettingsPanel/MusicSettingsPanel";
+import './styles.scss';
 
 const Game = () => {
 	const getRandomCountry = () => Math.floor(Math.random() * countries.length);
@@ -14,7 +14,8 @@ const Game = () => {
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [scores, setScores] = useState(0);
 	const [sounds, setSounds] = useState(true);
-	const [music, setMusic] = useState(true);
+	const [music, setMusic] = useState(false);
+	const [clickSound] = useSound(sounds ? button : null, { volume: 0.25 });
 	const musicRef = useRef();
 	
 	document.addEventListener('click', () => musicRef.current?.play());
@@ -63,16 +64,9 @@ const Game = () => {
 		setScores(0);
 	};
 	
-	const [clickSound] = useSound(sounds ? button : null, { volume: 0.25 });
-	
-	useHotkeys('1', () => onChooseAnswer(0));
-	useHotkeys('2', () => onChooseAnswer(1));
-	useHotkeys('3', () => onChooseAnswer(2));
-	useHotkeys('4', () => onChooseAnswer(3));
 	useHotkeys('s', () => nextLevel());
 	
 	return <div className="wrapper">
-		<SettingsPanel musicRef={musicRef}/>
 		<audio loop ref={musicRef} src={backgroundMusic} />
 		<div className="content_box">
 			<div className="buttons top_buttons__box">
@@ -80,9 +74,11 @@ const Game = () => {
 					Restart game
 				</button>
 				<div className="sounds_icon_box">
-					<div className="sounds_icon" onClick={() => setMusic(!music)} onMouseDown={sounds ? clickSound : null}>
-						{music ? <Icon.Volume2/> : <Icon.VolumeX/>}
+					<div className="sounds_icon" onMouseDown={sounds ? clickSound : null}>
+						{music ? <Icon.Volume2 onClick={() => setMusic(!music)}/> : <Icon.VolumeX onClick={() => setMusic(!music)}/>}
+						<MusicSettingsPanel musicRef={musicRef}/>
 					</div>
+					
 					<div className="sounds_icon" onClick={() => setSounds(!sounds)} onMouseDown={sounds ? clickSound : null}>
 						{sounds ? <Icon.Bell/> : <Icon.BellOff/>}
 					</div>

@@ -128,7 +128,12 @@
 
   &:first-child {
     margin-right: 5px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
+
   &:hover {
     opacity: .9;
   }
@@ -140,4 +145,25 @@
   &:focus {
     outline: none;
   }
+}
+
+.settings__panel {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  width: 100px;
+  height: 30px;
+}
+
+.music_range_box {
+  display: flex;
+  height: 40px;
+  width: 100px;
 }

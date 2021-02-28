@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import './App.scss';
 import useSound from "use-sound";
 import Game from "./components/Game";
-import SettingsPanel from "./components/SettingsPanel/SettingsPanel";
 import button from "./media/sounds/button.mp3";
+import './App.scss';
 
 const App = () => {
 	const [currentPage, setCurrentPage] = useState('start');
