@@ -28,17 +28,13 @@ const Volume = ({ musicRef }) => {
 				onChange={(values) => setState({ ...state, volume: values })}
 				renderTrack={({ props, children }) => (
 					<div onMouseDown={props.onMouseDown} onTouchStart={props.onTouchStart} className="music_range_box">
-						<div ref={props.ref} style={{
-							height: "5px",
-							width: "100%",
-							borderRadius: "4px",
+						<div className="range_track" ref={props.ref} style={{
 							background: getTrackBackground({
 								values: state.volume,
 								colors: ["#548BF4", "#ccc"],
 								min: MIN,
 								max: MAX,
-							}),
-							alignSelf: "center",
+							})
 						}}
 						>
 							{children}
@@ -46,27 +42,8 @@ const Volume = ({ musicRef }) => {
 					</div>
 				)}
 				renderThumb={({ props, isDragged }) => (
-					<div
-						{...props}
-						style={{
-							height: "15px",
-							width: "15px",
-							borderRadius: "50%",
-							backgroundColor: "#FFF",
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							boxShadow: "0px 2px 6px #AAA",
-						}}
-					>
-						<div
-							style={{
-								height: "5px",
-								width: "5px",
-								borderRadius: "50%",
-								backgroundColor: isDragged ? "#548BF4" : "#CCC",
-							}}
-						/>
+					<div className="range_thumb_box" {...props}>
+						<div className="range_thumb" style={{ backgroundColor: isDragged ? "#548BF4" : "#CCC", }}/>
 					</div>
 				)}
 			/>

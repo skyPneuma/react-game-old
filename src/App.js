@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 import useSound from "use-sound";
 import Game from "./components/Game";
 import button from "./media/sounds/button.mp3";
@@ -7,6 +8,8 @@ import './App.scss';
 const App = () => {
 	const [currentPage, setCurrentPage] = useState('start');
 	const [clickSound] = useSound(button, { volume: 0.5 });
+	
+	useHotkeys('s', () => setCurrentPage('game'));
 	
 	return (
 		currentPage === 'start'

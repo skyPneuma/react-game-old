@@ -168,6 +168,47 @@
   width: 100px;
 }
 
+.range_track {
+  height: 5px;
+  width: 100%;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.range_thumb_box {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px #AAA;
+
+  .range_thumb {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+  }
+}
+
+.result_text {
+  position: absolute;
+  top: 115px;
+  left: 20px;
+  font-size: 60px;
+  user-select: none;
+}
+
+.success {
+  color: #78C58D;
+}
+
+.error {
+  color: #ec394e;
+}
+
 .onGetAnswer_btn {
-  background: red;
+  background: #78C58D;
+  opacity: .5;
 }

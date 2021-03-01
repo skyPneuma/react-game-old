@@ -2,20 +2,26 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHotkeys } from "react-hotkeys-hook";
 import useSound from 'use-sound';
 import * as Icon from 'react-feather';
-import { countries } from "../countries";
+import { countriesENG } from "../countries";
 import button from '../media/sounds/button.mp3';
 import backgroundMusic from '../media/sounds/backgroundMusic.mp3';
 import MusicSettingsPanel from "./MusicSettingsPanel/MusicSettingsPanel";
 import './styles.scss';
 
 const Game = () => {
-	const getRandomCountry = () => Math.floor(Math.random() * countries.length);
+	const getRandomCountry = () => Math.floor(Math.random() * countriesENG.length);
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
+	const [selectedAnswer, setSelectedAnswer] = useState(null);
+	const [onGetAnswer, setOnGetAnswer] = useState(false);
+	const [result, setResult] = useState({
+		status: false,
+		text: ''
+	});
 	const [scores, setScores] = useState(0);
 	const [sounds, setSounds] = useState(false);
 	const [music, setMusic] = useState(false);
-	const [onGetAnswer, setOnGetAnswer] = useState(false);
+	//const [showHint, setShowHint] = useState(false);
 	const [clickSound] = useSound(sounds ? button : null, { volume: 0.25 });
 	const musicRef = useRef();
 	
@@ -28,7 +34,7 @@ const Game = () => {
 	useEffect(() => {
 		let arr = [];
 		if (answers.length < 4) {
-			for (let i = arr.length; i < 4; i++) arr.push(countries[getRandomCountry()]);
+			for (let i = arr.length; i < 4; i++) arr.push(countriesENG[getRandomCountry()]);
 			setAnswers(arr);
 			setRightAnswer(Math.floor(Math.random() * 4))
 		}
@@ -36,7 +42,7 @@ const Game = () => {
 	
 	const setRandomAnswers = () => {
 		let arr = [];
-		for (let i = arr.length; i < 4; i++) arr.push(countries[getRandomCountry()]);
+		for (let i = arr.length; i < 4; i++) arr.push(countriesENG[getRandomCountry()]);
 		setAnswers(arr);
 		setRightAnswer(Math.floor(Math.random() * 4))
 	};
@@ -46,29 +52,41 @@ const Game = () => {
 		setRightAnswer(Math.floor(Math.random() * 4));
 		prop && setScores(prev => prev - 1);
 	};
-
+	
 	const onChooseAnswer = index => {
+		setSelectedAnswer(index);
 		if (rightAnswer === index) {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setScores(prev => prev + 1);
-				nextLevel();
 				setOnGetAnswer(false);
-			}, 1000);
+				setResult({ status: true, text: 'Correct' });
+				setScores(prev => prev + 1);
+				setTimeout(() => {
+					setResult({ status: false, text: '' });
+					nextLevel();
+				}, 1500)
+			}, 1500);
 		}
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setScores(prev => prev - 1);
 				setOnGetAnswer(false);
-			}, 1000);
-			console.log('wrong')
+				setResult({ status: true, text: 'Wrong' });
+				setScores(prev => prev - 1);
+				setTimeout(() => {
+					setResult({ status: false, text: '' });
+				}, 1500)
+			}, 1500);
 		}
 	};
 	
 	const restartGame = () => {
 		nextLevel();
 		setScores(0);
+	};
+	
+	const showHint = () => {
+		setScores(prev => prev - 1);
 	};
 	
 	useHotkeys('s', () => nextLevel('skip'));
@@ -97,9 +115,13 @@ const Game = () => {
 					</div>
 				</div>
 				
-				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`} onMouseDown={clickSound}>
+				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+				        onMouseDown={clickSound}
+				        onClick={() => showHint()}
+				>
 					Hint
 				</button>
+				{/*<span>{rightAnswer.hint}</span>*/}
 				
 				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
 				        onMouseDown={clickSound}
@@ -117,12 +139,19 @@ const Game = () => {
 				     alt=""/>
 			</div>
 			
+			{result.status === true
+			 ? <span className={`result_text ${result.text === 'Correct' ? 'success' : 'error'}`}>
+				 {result.text}
+			</span>
+			 : null}
+			
 			<div className="buttons buttons_bottom">
 				{answers.map((item, index) =>
 					<button onClick={() => onChooseAnswer(index)}
 					        key={index}
 					        onMouseDown={clickSound}
-					        className={`buttons__answer ${(scores >= 10 || scores <= -10) ? 'disabled' : ''} ${onGetAnswer === true ? 'onGetAnswer_btn' : ''}`}
+					        className={`buttons__answer ${(scores >= 10 || scores <= -10) ? 'disabled' : ''}
+					        ${onGetAnswer === true && selectedAnswer === index ? 'onGetAnswer_btn' : ''}`}
 					>
 						{item.label}
 					</button>)}
