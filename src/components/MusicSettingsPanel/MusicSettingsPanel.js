@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Range, getTrackBackground } from "react-range";
-import { useHotkeys } from "react-hotkeys-hook";
 import "../styles.scss";
 
 const STEP = 0.1;
@@ -10,10 +9,8 @@ const MAX = 100;
 const Volume = ({ musicRef }) => {
 	const [state, setState] = useState({
 		toggled: false,
-		volume: [0],
+		volume: [100],
 	});
-	
-	useHotkeys("m", () => setState({ ...state, volume: [0] }));
 	
 	useEffect(() => {
 		const e = state.volume[0];
