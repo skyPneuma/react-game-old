@@ -1,3 +1,19 @@
+.df {
+  display: flex;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.ml5 {
+  margin-left: 5px;
+}
+
 .content_box {
   position: relative;
 }
@@ -21,6 +37,9 @@
   }
 
   button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Akaya Telivigala', cursive;
     color: #282c34;
     font-size: 20px;
@@ -56,6 +75,7 @@
   .top__btn {
     min-height: 40px;
     max-height: 40px;
+    padding: 8px;
 
     &:not(:last-child) {
       margin-right: 5px;
@@ -99,7 +119,7 @@
 
 .scores {
   font-family: 'Akaya Telivigala', cursive;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 600;
   color: #282c34;
   opacity: .7;
@@ -124,10 +144,10 @@
   border-radius: 5px;
   cursor: pointer;
   background: white;
-  opacity: .7;
+  opacity: .6;
+  margin-right: 5px;
 
   &:first-child {
-    margin-right: 5px;
     width: 170px;
     display: flex;
     align-items: center;
@@ -194,6 +214,7 @@
 
 .result_text {
   position: absolute;
+  font-weight: 600;
   top: 115px;
   left: 20px;
   font-size: 60px;
@@ -201,7 +222,7 @@
 }
 
 .success {
-  color: #78C58D;
+  color: #259035;
 }
 
 .error {
@@ -211,4 +232,24 @@
 .onGetAnswer_btn {
   background: #78C58D;
   opacity: .5;
+}
+
+.hint_box {
+  display: flex;
+  margin-right: 5px;
+}
+
+.hint_text {
+  font-family: 'Akaya Telivigala', cursive;
+  font-size: 19px;
+  padding: 7px;
+  color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: white;
+  opacity: .6;
+  margin-right: 5px;
+  user-select: none;
 }

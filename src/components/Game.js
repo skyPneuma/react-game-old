@@ -14,22 +14,23 @@ const Game = () => {
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [onGetAnswer, setOnGetAnswer] = useState(false);
+	const [scores, setScores] = useState(0);
+	const [isSounds, setIsSounds] = useState(false);
+	const [isMusic, setIsMusic] = useState(false);
+	const [isSettings, setIsSettings] = useState(false);
+	const [showHint, setShowHint] = useState(false);
+	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
+	const musicRef = useRef();
 	const [result, setResult] = useState({
 		status: false,
 		text: ''
 	});
-	const [scores, setScores] = useState(0);
-	const [sounds, setSounds] = useState(false);
-	const [music, setMusic] = useState(false);
-	//const [showHint, setShowHint] = useState(false);
-	const [clickSound] = useSound(sounds ? button : null, { volume: 0.25 });
-	const musicRef = useRef();
 	
 	document.addEventListener('click', () => musicRef.current?.play());
 	
 	useEffect(() => {
-		if (musicRef.current) musicRef.current.volume = music ? +music : 0;
-	}, [music]);
+		if (musicRef.current) musicRef.current.volume = isMusic ? +isMusic : 0;
+	}, [isMusic]);
 	
 	useEffect(() => {
 		let arr = [];
@@ -59,7 +60,7 @@ const Game = () => {
 			setOnGetAnswer(true);
 			setTimeout(() => {
 				setOnGetAnswer(false);
-				setResult({ status: true, text: 'Correct' });
+				setResult({ status: true, text: 'Right' });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
 					setResult({ status: false, text: '' });
@@ -83,17 +84,19 @@ const Game = () => {
 	const restartGame = () => {
 		nextLevel();
 		setScores(0);
+		setShowHint(false);
 	};
 	
-	const showHint = () => {
-		setScores(prev => prev - 1);
+	const onClickHint = () => {
+		if (!showHint) setScores(prev => prev - 1);
+		setShowHint(!showHint);
 	};
 	
 	useHotkeys('s', () => nextLevel('skip'));
 	useHotkeys('r', () => restartGame());
 	useHotkeys('m', () => {
-		setSounds(prev => !prev);
-		setMusic(prev => !prev);
+		setIsSounds(prev => !prev);
+		setIsMusic(prev => !prev);
 	});
 	
 	return <div className="wrapper">
@@ -101,37 +104,61 @@ const Game = () => {
 		
 		<div className="content_box">
 			<div className="buttons top_buttons__box">
-				<button className="top__btn" onClick={() => restartGame()} onMouseDown={clickSound}>
-					Restart game
-				</button>
-				
-				<div className="sounds_icon_box">
-					<div className="sounds_icon" onMouseDown={sounds ? clickSound : null}>
-						{music ? <Icon.Volume2 onClick={() => setMusic(!music)}/> : <Icon.VolumeX onClick={() => setMusic(!music)}/>}
-						<MusicSettingsPanel musicRef={musicRef}/>
+				<div className="df">
+					<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+					        onMouseDown={clickSound}
+					        onClick={() => setIsSettings(!isSettings)}
+					>
+						<Icon.Settings/>
+					</button>
+					
+					<div className={`sounds_icon_box ${!isSettings && 'hidden'}`}>
+						<div className="sounds_icon" onMouseDown={isSounds ? clickSound : null}>
+							{isMusic
+							 ? <Icon.Volume2 onClick={() => setIsMusic(!isMusic)}/>
+							 : <Icon.VolumeX onClick={() => setIsMusic(!isMusic)}/>}
+							<MusicSettingsPanel musicRef={musicRef}/>
+						</div>
+						<div className="sounds_icon" onClick={() => setIsSounds(!isSounds)} onMouseDown={isSounds ? clickSound : null}>
+							{isSounds ? <Icon.Bell/> : <Icon.BellOff/>}
+						</div>
 					</div>
-					<div className="sounds_icon" onClick={() => setSounds(!sounds)} onMouseDown={sounds ? clickSound : null}>
-						{sounds ? <Icon.Bell/> : <Icon.BellOff/>}
+					
+					<div className={`${!isSettings && 'hidden'}`}>
+						<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+						        onMouseDown={clickSound}
+						        onClick={() => console.log("Help")}
+						>
+							<Icon.HelpCircle/>
+						</button>
 					</div>
 				</div>
 				
-				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
-				        onMouseDown={clickSound}
-				        onClick={() => showHint()}
-				>
-					Hint
-				</button>
-				{/*<span>{rightAnswer.hint}</span>*/}
-				
-				<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
-				        onMouseDown={clickSound}
-				        onClick={() => nextLevel('skip')}
-				>
-					Skip round
-				</button>
+				<div className="df">
+					<div className="hint_box">
+						{showHint && <div className="hint_text"><span>{rightAnswer.hint}test</span></div>}
+						<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+						        onMouseDown={clickSound}
+						        onClick={() => onClickHint()}
+						>
+							<Icon.AlertCircle/>
+						</button>
+					</div>
+					
+					<button className="top__btn" onClick={() => restartGame()} onMouseDown={clickSound}>
+						<Icon.RotateCcw/>
+					</button>
+					
+					<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+					        onMouseDown={clickSound}
+					        onClick={() => nextLevel('skip')}
+					>
+						<Icon.ChevronsRight/>
+					</button>
+				</div>
 			</div>
 			
-			<span className="scores">{scores} /10</span>
+			<span className="scores">{scores}/10</span>
 			
 			<div className="country_field">
 				<img className="country_img"
@@ -140,7 +167,7 @@ const Game = () => {
 			</div>
 			
 			{result.status === true
-			 ? <span className={`result_text ${result.text === 'Correct' ? 'success' : 'error'}`}>
+			 ? <span className={`result_text ${result.text === 'Right' ? 'success' : 'error'}`}>
 				 {result.text}
 			</span>
 			 : null}
