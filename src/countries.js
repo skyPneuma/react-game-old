@@ -1,767 +1,943 @@
 export const countriesENG = [
 	{
 		"value": "AF",
-		"label": "Afghanistan"
+		"label": "Afghanistan",
+		"hint": "Kabul"
 	},
 	{
 		"value": "AL",
-		"label": "Albania"
+		"label": "Albania",
+		"hint": "Tirana"
 	},
 	{
 		"value": "DZ",
-		"label": "Algeria"
+		"label": "Algeria",
+		"hint": "Algiers"
 	},
 	{
 		"value": "AD",
-		"label": "Andorra"
+		"label": "Andorra",
+		"hint": "Andorra la Vella"
 	},
 	{
 		"value": "AO",
-		"label": "Angola"
+		"label": "Angola",
+		"hint": "Luanda"
 	},
 	{
 		"value": "AG",
-		"label": "Antigua & Barbuda"
+		"label": "Antigua & Barbuda",
+		"hint": "St. John's"
 	},
 	{
 		"value": "AR",
-		"label": "Argentina"
+		"label": "Argentina",
+		"hint": "Buenos Aires"
 	},
 	{
 		"value": "AM",
-		"label": "Armenia"
+		"label": "Armenia",
+		"hint": "Yerevan"
 	},
 	{
 		"value": "AU",
-		"label": "Australia"
+		"label": "Australia",
+		"hint": "Canberra"
 	},
 	{
 		"value": "AT",
-		"label": "Austria"
+		"label": "Austria",
+		"hint": "Vienna"
 	},
 	{
 		"value": "AZ",
-		"label": "Azerbaijan"
+		"label": "Azerbaijan",
+		"hint": "Baku"
 	},
 	{
 		"value": "BS",
-		"label": "Bahamas"
+		"label": "Bahamas",
+		"hint": "Nassau"
 	},
 	{
 		"value": "BH",
-		"label": "Bahrain"
+		"label": "Bahrain",
+		"hint": "Manama"
 	},
 	{
 		"value": "BD",
-		"label": "Bangladesh"
+		"label": "Bangladesh",
+		"hint": "Dhaka"
 	},
 	{
 		"value": "BB",
-		"label": "Barbados"
+		"label": "Barbados",
+		"hint": "Bridgetown"
 	},
 	{
 		"value": "BY",
-		"label": "Belarus"
+		"label": "Belarus",
+		"hint": "Minsk"
 	},
 	{
 		"value": "BE",
-		"label": "Belgium"
+		"label": "Belgium",
+		"hint": "Brussels"
 	},
 	{
 		"value": "BZ",
-		"label": "Belize"
+		"label": "Belize",
+		"hint": "Belmopan"
 	},
 	{
 		"value": "BJ",
-		"label": "Benin"
+		"label": "Benin",
+		"hint": "Porto-Novo"
 	},
 	{
 		"value": "BT",
-		"label": "Bhutan"
+		"label": "Bhutan",
+		"hint": "Thimphu"
 	},
 	{
 		"value": "BO",
-		"label": "Bolivia"
+		"label": "Bolivia",
+		"hint": "Sucre"
 	},
 	{
 		"value": "BA",
-		"label": "Bosnia & Herzegovina"
+		"label": "Bosnia & Herzegovina",
+		"hint": "Sarajevo"
 	},
 	{
 		"value": "BW",
-		"label": "Botswana"
+		"label": "Botswana",
+		"hint": "Gaborone"
 	},
 	{
 		"value": "BR",
-		"label": "Brazil"
+		"label": "Brazil",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "BN",
-		"label": "Brunei"
+		"label": "Brunei",
+		"hint": "Bandar-Seri-Begawan"
 	},
 	{
 		"value": "BG",
-		"label": "Bulgaria"
+		"label": "Bulgaria",
+		"hint": "Sofia"
 	},
 	{
 		"value": "BF",
-		"label": "Burkina Faso"
+		"label": "Burkina Faso",
+		"hint": "Ouagadougou"
 	},
 	{
 		"value": "BI",
-		"label": "Burundi"
+		"label": "Burundi",
+		"hint": "Bujumbura"
 	},
 	{
 		"value": "KH",
-		"label": "Cambodia"
+		"label": "Cambodia",
+		"hint": "Phnom Penh"
 	},
 	{
 		"value": "CM",
-		"label": "Cameroon"
+		"label": "Cameroon",
+		"hint": "Yaoundé"
 	},
 	{
 		"value": "CA",
-		"label": "Canada"
+		"label": "Canada",
+		"hint": "Ottawa"
 	},
 	{
 		"value": "CV",
-		"label": "Cape Verde"
+		"label": "Cape Verde",
+		"hint": "Praia"
 	},
 	{
 		"value": "CF",
-		"label": "Central African Republic"
+		"label": "Central African Republic",
+		"hint": "Bangui"
 	},
 	{
 		"value": "TD",
-		"label": "Chad"
+		"label": "Chad",
+		"hint": "N'Djamena"
 	},
 	{
 		"value": "CL",
-		"label": "Chile"
+		"label": "Chile",
+		"hint": "Santiago"
 	},
 	{
 		"value": "CN",
-		"label": "China"
+		"label": "China",
+		"hint": "Beijing"
 	},
 	{
 		"value": "CO",
-		"label": "Colombia"
+		"label": "Colombia",
+		"hint": "Bogotá"
 	},
 	{
 		"value": "KM",
-		"label": "Comoros"
+		"label": "Comoros",
+		"hint": "Moroni"
 	},
 	{
 		"value": "CG",
-		"label": "Congo - Brazzaville"
+		"label": "Republic of the Congo",
+		"hint": "Brazzaville"
 	},
 	{
 		"value": "CD",
-		"label": "Congo - Kinshasa"
+		"label": "D.R. Congo",
+		"hint": "Kinshasa"
 	},
 	{
 		"value": "CR",
-		"label": "Costa Rica"
+		"label": "Costa Rica",
+		"hint": "San José"
 	},
 	{
 		"value": "HR",
-		"label": "Croatia"
+		"label": "Croatia",
+		"hint": "Zagreb"
 	},
 	{
 		"value": "CU",
-		"label": "Cuba"
+		"label": "Cuba",
+		"hint": "Havana"
 	},
 	{
 		"value": "CY",
-		"label": "Cyprus"
+		"label": "Cyprus",
+		"hint": "Nicosia"
 	},
 	{
 		"value": "CZ",
-		"label": "Czech Republic"
+		"label": "Czech Republic",
+		"hint": "Prague"
 	},
 	{
 		"value": "CI",
-		"label": "Côte d’Ivoire"
+		"label": "Côte d’Ivoire",
+		"hint": "Yamoussoukro (de-jure)"
 	},
 	{
 		"value": "DK",
-		"label": "Denmark"
+		"label": "Denmark",
+		"hint": "Copenhagen"
 	},
 	{
 		"value": "DJ",
-		"label": "Djibouti"
+		"label": "Djibouti",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "DM",
-		"label": "Dominica"
+		"label": "Dominica",
+		"hint": "Roseau"
 	},
 	{
 		"value": "DO",
-		"label": "Dominican Republic"
+		"label": "Dominican Republic",
+		"hint": "Santo Domingo"
 	},
 	{
 		"value": "EC",
-		"label": "Ecuador"
+		"label": "Ecuador",
+		"hint": "Quito"
 	},
 	{
 		"value": "EG",
-		"label": "Egypt"
+		"label": "Egypt",
+		"hint": "Cairo"
 	},
 	{
 		"value": "SV",
-		"label": "Salvador"
+		"label": "Salvador",
+		"hint": "San Salvador"
 	},
 	{
 		"value": "GQ",
-		"label": "Equatorial Guinea"
+		"label": "Equatorial Guinea",
+		"hint": "Malabo"
 	},
 	{
 		"value": "ER",
-		"label": "Eritrea"
+		"label": "Eritrea",
+		"hint": "Asmara"
 	},
 	{
 		"value": "EE",
-		"label": "Estonia"
+		"label": "Estonia",
+		"hint": "Tallinn"
 	},
 	{
 		"value": "SZ",
-		"label": "Eswatini"
+		"label": "Eswatini",
+		"hint": "Mbabane, Lobamba"
 	},
 	{
 		"value": "ET",
-		"label": "Ethiopia"
+		"label": "Ethiopia",
+		"hint": "Addis Ababa"
 	},
 	{
 		"value": "FJ",
-		"label": "Fiji"
+		"label": "Fiji",
+		"hint": "Suva"
 	},
 	{
 		"value": "FI",
-		"label": "Finland"
+		"label": "Finland",
+		"hint": "Helsinki"
 	},
 	{
 		"value": "FR",
-		"label": "France"
+		"label": "France",
+		"hint": "Paris"
 	},
 	{
 		"value": "GA",
-		"label": "Gabon"
+		"label": "Gabon",
+		"hint": "Libreville"
 	},
 	{
 		"value": "GM",
-		"label": "Gambia"
+		"label": "Gambia",
+		"hint": "Banjul"
 	},
 	{
 		"value": "GE",
-		"label": "Georgia"
+		"label": "Georgia",
+		"hint": "Tbilisi"
 	},
 	{
 		"value": "DE",
-		"label": "Germany"
+		"label": "Germany",
+		"hint": "Berlin"
 	},
 	{
 		"value": "GH",
-		"label": "Ghana"
+		"label": "Ghana",
+		"hint": "Accra"
 	},
 	{
 		"value": "GR",
-		"label": "Greece"
+		"label": "Greece",
+		"hint": "Athens"
 	},
 	{
 		"value": "GD",
-		"label": "Grenada"
+		"label": "Grenada",
+		"hint": "St. George's"
 	},
 	{
 		"value": "GT",
-		"label": "Guatemala"
+		"label": "Guatemala",
+		"hint": "Guatemala City"
 	},
 	{
 		"value": "GN",
-		"label": "Guinea"
+		"label": "Guinea",
+		"hint": "Conakry"
 	},
 	{
 		"value": "GW",
-		"label": "Guinea-Bissau"
+		"label": "Guinea-Bissau",
+		"hint": "Bissau"
 	},
 	{
 		"value": "GY",
-		"label": "Guyana"
+		"label": "Guyana",
+		"hint": "Georgetown"
 	},
 	{
 		"value": "HT",
-		"label": "Haiti"
+		"label": "Haiti",
+		"hint": "Port-au-prince"
 	},
 	{
 		"value": "HN",
-		"label": "Honduras"
+		"label": "Honduras",
+		"hint": "Tegucigalpa"
 	},
 	{
 		"value": "HU",
-		"label": "Hungary"
+		"label": "Hungary",
+		"hint": "Budapest"
 	},
 	{
 		"value": "IS",
-		"label": "Iceland"
+		"label": "Iceland",
+		"hint": "Reykjavík"
 	},
 	{
 		"value": "IN",
-		"label": "India"
+		"label": "India",
+		"hint": "New Delhi"
 	},
 	{
 		"value": "ID",
-		"label": "Indonesia"
+		"label": "Indonesia",
+		"hint": "Jakarta"
 	},
 	{
 		"value": "IR",
-		"label": "Iran"
+		"label": "Iran",
+		"hint": "Tehran"
 	},
 	{
 		"value": "IQ",
-		"label": "Iraq"
+		"label": "Iraq",
+		"hint": "Baghdad"
 	},
 	{
 		"value": "IE",
-		"label": "Ireland"
+		"label": "Ireland",
+		"hint": "Dublin"
 	},
 	{
 		"value": "IL",
-		"label": "Israel"
+		"label": "Israel",
+		"hint": "Jerusalem"
 	},
 	{
 		"value": "IT",
-		"label": "Italy"
+		"label": "Italy",
+		"hint": "Rome"
 	},
 	{
 		"value": "JM",
-		"label": "Jamaica"
+		"label": "Jamaica",
+		"hint": "Kingston"
 	},
 	{
 		"value": "JP",
-		"label": "Japan"
+		"label": "Japan",
+		"hint": "Tokyo"
 	},
 	{
 		"value": "JO",
-		"label": "Jordan"
+		"label": "Jordan",
+		"hint": "Amman"
 	},
 	{
 		"value": "KZ",
-		"label": "Kazakhstan"
+		"label": "Kazakhstan",
+		"hint": "Astana"
 	},
 	{
 		"value": "KE",
-		"label": "Kenya"
+		"label": "Kenya",
+		"hint": "Nairobi"
 	},
 	{
 		"value": "KW",
-		"label": "Kuwait"
+		"label": "Kuwait",
+		"hint": "Capital = country name"
 	},
-	/*{
-		"value": "KG",
-		"label": "Kyrgyzstan"
-	},*/
 	{
 		"value": "LA",
-		"label": "Laos"
+		"label": "Laos",
+		"hint": "Vientiane"
 	},
 	{
 		"value": "LV",
-		"label": "Latvia"
+		"label": "Latvia",
+		"hint": "Riga"
 	},
 	{
 		"value": "LB",
-		"label": "Lebanon"
+		"label": "Lebanon",
+		"hint": "Beirut"
 	},
 	{
 		"value": "LS",
-		"label": "Lesotho"
+		"label": "Lesotho",
+		"hint": "Maseru"
 	},
 	{
 		"value": "LR",
-		"label": "Liberia"
+		"label": "Liberia",
+		"hint": "Monrovia"
 	},
 	{
 		"value": "LY",
-		"label": "Libya"
+		"label": "Libya",
+		"hint": "Tripoli"
 	},
 	{
 		"value": "LI",
-		"label": "Liechtenstein"
+		"label": "Liechtenstein",
+		"hint": "Vaduz"
 	},
 	{
 		"value": "LT",
-		"label": "Lithuania"
+		"label": "Lithuania",
+		"hint": "Vilnius"
 	},
 	{
 		"value": "LU",
-		"label": "Luxembourg"
+		"label": "Luxembourg",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "MG",
-		"label": "Madagascar"
+		"label": "Madagascar",
+		"hint": "Antananarivo"
 	},
 	{
 		"value": "MW",
-		"label": "Malawi"
+		"label": "Malawi",
+		"hint": "Lilongwe"
 	},
 	{
 		"value": "MY",
-		"label": "Malaysia"
+		"label": "Malaysia",
+		"hint": "Kuala Lumpur"
 	},
 	{
 		"value": "MV",
-		"label": "Maldives"
+		"label": "Maldives",
+		"hint": "Malé"
 	},
 	{
 		"value": "ML",
-		"label": "Mali"
+		"label": "Mali",
+		"hint": "Bamako"
 	},
 	{
 		"value": "MT",
-		"label": "Malta"
+		"label": "Malta",
+		"hint": "Valletta"
 	},
 	{
 		"value": "MR",
-		"label": "Mauritania"
+		"label": "Mauritania",
+		"hint": "Nouakchott"
 	},
 	{
 		"value": "MU",
-		"label": "Mauritius"
+		"label": "Mauritius",
+		"hint": "Port Louis"
 	},
 	{
 		"value": "MX",
-		"label": "Mexico"
+		"label": "Mexico",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "FM",
-		"label": "Micronesia"
+		"label": "Micronesia",
+		"hint": "Palikir"
 	},
 	{
 		"value": "MD",
-		"label": "Moldova"
+		"label": "Moldova",
+		"hint": "Chisinau"
 	},
 	{
 		"value": "MC",
-		"label": "Monaco"
+		"label": "Monaco",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "MN",
-		"label": "Mongolia"
+		"label": "Mongolia",
+		"hint": "Ulan Bator"
 	},
 	{
 		"value": "ME",
-		"label": "Montenegro"
+		"label": "Montenegro",
+		"hint": "Podgorica"
 	},
 	{
 		"value": "MA",
-		"label": "Morocco"
+		"label": "Morocco",
+		"hint": "Rabat"
 	},
 	{
 		"value": "MZ",
-		"label": "Mozambique"
+		"label": "Mozambique",
+		"hint": "Maputo"
 	},
 	{
 		"value": "MM",
-		"label": "Myanmar (Burma)"
+		"label": "Myanmar (Burma)",
+		"hint": "Naypyidaw"
 	},
-	/*{
-		"value": "NA",
-		"label": "Namibia"
-	},*/
 	{
 		"value": "NR",
-		"label": "Nauru"
+		"label": "Nauru",
+		"hint": "Yaren"
 	},
 	{
 		"value": "NP",
-		"label": "Nepal"
+		"label": "Nepal",
+		"hint": "Kathmandu"
 	},
 	{
 		"value": "NL",
-		"label": "Netherlands"
+		"label": "Netherlands",
+		"hint": "Amsterdam"
 	},
 	{
 		"value": "NZ",
-		"label": "New Zealand"
+		"label": "New Zealand",
+		"hint": "Wellington"
 	},
 	{
 		"value": "NI",
-		"label": "Nicaragua"
+		"label": "Nicaragua",
+		"hint": "Managua"
 	},
 	{
 		"value": "NE",
-		"label": "Niger"
+		"label": "Niger",
+		"hint": "Niamey"
 	},
 	{
 		"value": "NG",
-		"label": "Nigeria"
+		"label": "Nigeria",
+		"hint": "Abuja"
 	},
 	{
 		"value": "KP",
-		"label": "North Korea"
+		"label": "North Korea",
+		"hint": "Pyongyang"
 	},
 	{
 		"value": "MK",
-		"label": "North Macedonia"
+		"label": "North Macedonia",
+		"hint": "Skopje"
 	},
 	{
 		"value": "NO",
-		"label": "Norway"
+		"label": "Norway",
+		"hint": "Oslo"
 	},
 	{
 		"value": "OM",
-		"label": "Oman"
+		"label": "Oman",
+		"hint": "Muscat"
 	},
 	{
 		"value": "PK",
-		"label": "Pakistan"
+		"label": "Pakistan",
+		"hint": "Islamabad"
 	},
 	{
 		"value": "PW",
-		"label": "Palau"
+		"label": "Palau",
+		"hint": "Ngerulmud"
 	},
 	{
 		"value": "PA",
-		"label": "Panama"
+		"label": "Panama",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "PG",
-		"label": "Papua New Guinea"
+		"label": "Papua New Guinea",
+		"hint": "Port Moresby"
 	},
 	{
 		"value": "PY",
-		"label": "Paraguay"
+		"label": "Paraguay",
+		"hint": "Asunción"
 	},
 	{
 		"value": "PE",
-		"label": "Peru"
+		"label": "Peru",
+		"hint": "Lima"
 	},
 	{
 		"value": "PH",
-		"label": "Philippines"
+		"label": "Philippines",
+		"hint": "Manila"
 	},
 	{
 		"value": "PL",
-		"label": "Poland"
+		"label": "Poland",
+		"hint": "Warsaw"
 	},
 	{
 		"value": "PT",
-		"label": "Portugal"
+		"label": "Portugal",
+		"hint": "Lisbon"
 	},
 	{
 		"value": "QA",
-		"label": "Qatar"
+		"label": "Qatar",
+		"hint": "Doha"
 	},
 	{
 		"value": "RO",
-		"label": "Romania"
+		"label": "Romania",
+		"hint": "Bucharest"
 	},
 	{
 		"value": "RU",
-		"label": "Russia"
+		"label": "Russia",
+		"hint": "Moscow"
 	},
 	{
 		"value": "RW",
-		"label": "Rwanda"
+		"label": "Rwanda",
+		"hint": "Kigali"
 	},
 	{
 		"value": "WS",
-		"label": "Samoa"
+		"label": "Samoa",
+		"hint": "Apia"
 	},
 	{
 		"value": "SM",
-		"label": "San Marino"
+		"label": "San Marino",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "SA",
-		"label": "Saudi Arabia"
+		"label": "Saudi Arabia",
+		"hint": "Riyadh"
 	},
 	{
 		"value": "SN",
-		"label": "Senegal"
+		"label": "Senegal",
+		"hint": "Dakar"
 	},
 	{
 		"value": "RS",
-		"label": "Serbia"
+		"label": "Serbia",
+		"hint": "Belgrade"
 	},
 	{
 		"value": "SC",
-		"label": "Seychelles"
+		"label": "Seychelles",
+		"hint": "Victoria"
 	},
 	{
 		"value": "SL",
-		"label": "Sierra Leone"
+		"label": "Sierra Leone",
+		"hint": "Freetown"
 	},
 	{
 		"value": "SG",
-		"label": "Singapore"
+		"label": "Singapore",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "SK",
-		"label": "Slovakia"
+		"label": "Slovakia",
+		"hint": "Bratislava"
 	},
 	{
 		"value": "SI",
-		"label": "Slovenia"
+		"label": "Slovenia",
+		"hint": "Ljubljana"
 	},
 	{
 		"value": "SB",
-		"label": "Solomon Islands"
+		"label": "Solomon Islands",
+		"hint": "Honiara"
 	},
 	{
 		"value": "SO",
-		"label": "Somalia"
+		"label": "Somalia",
+		"hint": "Mogadishu"
 	},
 	{
 		"value": "ZA",
-		"label": "South Africa"
+		"label": "South Africa",
+		"hint": "Cape Town"
 	},
 	{
 		"value": "KR",
-		"label": "South Korea"
+		"label": "South Korea",
+		"hint": "Seoul"
 	},
 	{
 		"value": "SS",
-		"label": "South Sudan"
+		"label": "South Sudan",
+		"hint": "Juba"
 	},
 	{
 		"value": "ES",
-		"label": "Spain"
+		"label": "Spain",
+		"hint": "Madrid"
 	},
 	{
 		"value": "LK",
-		"label": "Sri Lanka"
+		"label": "Sri Lanka",
+		"hint": "Sri Jayawardenepura Kotte"
 	},
 	{
 		"value": "KN",
-		"label": "St. Kitts & Nevis"
+		"label": "St. Kitts & Nevis",
+		"hint": "Basseterre"
 	},
 	{
 		"value": "LC",
-		"label": "St. Lucia"
+		"label": "St. Lucia",
+		"hint": "Castries"
 	},
 	{
 		"value": "VC",
-		"label": "St. Vincent & Grenadines"
+		"label": "St. Vincent & Grenadines",
+		"hint": "Kingstown"
 	},
 	{
 		"value": "SD",
-		"label": "Sudan"
+		"label": "Sudan",
+		"hint": "Khartoum"
 	},
 	{
 		"value": "SR",
-		"label": "Suriname"
+		"label": "Suriname",
+		"hint": "Paramaribo"
 	},
 	{
 		"value": "SE",
-		"label": "Sweden"
+		"label": "Sweden",
+		"hint": "Stockholm"
 	},
 	{
 		"value": "CH",
-		"label": "Switzerland"
+		"label": "Switzerland",
+		"hint": "Bern"
 	},
 	{
 		"value": "SY",
-		"label": "Syria"
+		"label": "Syria",
+		"hint": "Damascus"
 	},
 	{
 		"value": "ST",
-		"label": "São Tomé & Príncipe"
+		"label": "São Tomé & Príncipe",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "TJ",
-		"label": "Tajikistan"
+		"label": "Tajikistan",
+		"hint": "Dushanbe"
 	},
 	{
 		"value": "TZ",
-		"label": "Tanzania"
+		"label": "Tanzania",
+		"hint": "Dodoma"
 	},
 	{
 		"value": "TH",
-		"label": "Thailand"
+		"label": "Thailand",
+		"hint": "Bangkok"
 	},
 	{
 		"value": "TL",
-		"label": "Timor-Leste"
+		"label": "Timor-Leste(East Timor)",
+		"hint": "Dili"
 	},
 	{
 		"value": "TG",
-		"label": "Togo"
+		"label": "Togo",
+		"hint": "Lomé"
 	},
 	{
 		"value": "TO",
-		"label": "Tonga"
+		"label": "Tonga",
+		"hint": "Nuku'alofa"
 	},
 	{
 		"value": "TT",
-		"label": "Trinidad & Tobago"
+		"label": "Trinidad & Tobago",
+		"hint": "Port of Spain"
 	},
 	{
 		"value": "TN",
-		"label": "Tunisia"
+		"label": "Tunisia",
+		"hint": "Capital = country name"
 	},
 	{
 		"value": "TR",
-		"label": "Turkey"
+		"label": "Turkey",
+		"hint": "Ankara"
 	},
 	{
 		"value": "TM",
-		"label": "Turkmenistan"
+		"label": "Turkmenistan",
+		"hint": "Ashgabat"
 	},
 	{
 		"value": "TV",
-		"label": "Tuvalu"
+		"label": "Tuvalu",
+		"hint": "Funafuti"
 	},
 	{
 		"value": "UG",
-		"label": "Uganda"
+		"label": "Uganda",
+		"hint": "Kampala"
 	},
-	/*{
-		"value": "UA",
-		"label": "Ukraine"
-	},*/
 	{
 		"value": "AE",
-		"label": "United Arab Emirates"
+		"label": "United Arab Emirates",
+		"hint": "Abu Dhabi"
 	},
 	{
 		"value": "GB",
-		"label": "United Kingdom"
+		"label": "United Kingdom",
+		"hint": "London"
 	},
 	{
 		"value": "US",
-		"label": "United States"
+		"label": "United States",
+		"hint": "Washington D.C."
 	},
 	{
 		"value": "UY",
-		"label": "Uruguay"
+		"label": "Uruguay",
+		"hint": "Montevideo"
 	},
 	{
 		"value": "UZ",
-		"label": "Uzbekistan"
+		"label": "Uzbekistan",
+		"hint": "Tashkent"
 	},
 	{
 		"value": "VU",
-		"label": "Vanuatu"
+		"label": "Vanuatu",
+		"hint": "Port Vila"
 	},
 	{
 		"value": "VE",
-		"label": "Venezuela"
+		"label": "Venezuela",
+		"hint": "Caracas"
 	},
 	{
 		"value": "VN",
-		"label": "Vietnam"
+		"label": "Vietnam",
+		"hint": "Hanoi"
 	},
 	{
 		"value": "YE",
-		"label": "Yemen"
+		"label": "Yemen",
+		"hint": "Sana'a"
 	},
 	{
 		"value": "ZM",
-		"label": "Zambia"
+		"label": "Zambia",
+		"hint": "Lusaka"
 	},
 	{
 		"value": "ZW",
-		"label": "Zimbabwe"
+		"label": "Zimbabwe",
+		"hint": "Harare"
 	}
 ];
 
@@ -1211,11 +1387,6 @@ export const countriesRU = [
 		"label": "Кувейт",
 		"hint": "Эль-Кувейт"
 	},
-	/*{
-		"value": "KG",
-		"label": "Киргизия",
-		"hint": "Бишкек"
-	},*/
 	{
 		"value": "LA",
 		"label": "Лаос",
@@ -1346,11 +1517,6 @@ export const countriesRU = [
 		"label": "Мьянма",
 		"hint": "Нейпьидо"
 	},
-	/*{
-		"value": "NA",
-		"label": "Намибия",
-		"hint": "Виндхук"
-	},*/
 	{
 		"value": "NR",
 		"label": "Науру",
@@ -1661,11 +1827,6 @@ export const countriesRU = [
 		"label": "Уганда",
 		"hint": "Кампала"
 	},
-	/*{
-		"value": "UA",
-		"label": "Украина",
-		"hint": "Киев"
-	},*/
 	{
 		"value": "AE",
 		"label": "ОАЭ",
