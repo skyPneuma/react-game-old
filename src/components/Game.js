@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useHotkeys } from "react-hotkeys-hook";
 import useSound from 'use-sound';
 import * as Icon from 'react-feather';
-import { countriesENG } from "../countries";
+import { countriesENG, countriesRU } from "../countries";
 import button from '../media/sounds/button.mp3';
 import backgroundMusic from '../media/sounds/backgroundMusic.mp3';
 import MusicSettingsPanel from "./MusicSettingsPanel/MusicSettingsPanel";
 import './styles.scss';
 
 const Game = () => {
-	const getRandomCountry = () => Math.floor(Math.random() * countriesENG.length);
+	const [lang, setLang] = useState(true);
+	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -35,7 +36,7 @@ const Game = () => {
 	useEffect(() => {
 		let arr = [];
 		if (answers.length < 4) {
-			for (let i = arr.length; i < 4; i++) arr.push(countriesENG[getRandomCountry()]);
+			for (let i = arr.length; i < 4; i++) arr.push((lang ? countriesRU : countriesENG)[getRandomCountry()]);
 			setAnswers(arr);
 			setRightAnswer(Math.floor(Math.random() * 4))
 		}
@@ -43,7 +44,7 @@ const Game = () => {
 	
 	const setRandomAnswers = () => {
 		let arr = [];
-		for (let i = arr.length; i < 4; i++) arr.push(countriesENG[getRandomCountry()]);
+		for (let i = arr.length; i < 4; i++) arr.push((lang ? countriesRU : countriesENG)[getRandomCountry()]);
 		setAnswers(arr);
 		setRightAnswer(Math.floor(Math.random() * 4))
 	};
@@ -92,8 +93,9 @@ const Game = () => {
 		setShowHint(!showHint);
 	};
 	
-	useHotkeys('s', () => nextLevel('skip'));
+	useHotkeys('n', () => nextLevel('skip'));
 	useHotkeys('r', () => restartGame());
+	useHotkeys('l', () => setLang(prev => !prev));
 	useHotkeys('m', () => {
 		setIsSounds(prev => !prev);
 		setIsMusic(prev => !prev);
@@ -105,10 +107,7 @@ const Game = () => {
 		<div className="content_box">
 			<div className="buttons top_buttons__box">
 				<div className="df">
-					<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
-					        onMouseDown={clickSound}
-					        onClick={() => setIsSettings(!isSettings)}
-					>
+					<button className="top__btn" onMouseDown={clickSound} onClick={() => setIsSettings(!isSettings)}>
 						<Icon.Settings/>
 					</button>
 					
@@ -125,11 +124,14 @@ const Game = () => {
 					</div>
 					
 					<div className={`${!isSettings && 'hidden'}`}>
-						<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
-						        onMouseDown={clickSound}
-						        onClick={() => console.log("Help")}
-						>
+						<button className="top__btn mr5" onMouseDown={clickSound} onClick={() => console.log("Help")}>
 							<Icon.HelpCircle/>
+						</button>
+					</div>
+					
+					<div className={`${!isSettings && 'hidden'}`}>
+						<button className="top__btn" onMouseDown={clickSound} onClick={() => setLang(!lang)}>
+							{lang ? 'RU' : 'ENG'}
 						</button>
 					</div>
 				</div>
