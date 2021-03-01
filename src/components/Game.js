@@ -40,7 +40,7 @@ const Game = () => {
 			setAnswers(arr);
 			setRightAnswer(Math.floor(Math.random() * 4))
 		}
-	}, [answers]);
+	}, [answers, getRandomCountry]);
 	
 	const setRandomAnswers = () => {
 		let arr = [];
@@ -52,6 +52,7 @@ const Game = () => {
 	const nextLevel = prop => {
 		setRandomAnswers();
 		setRightAnswer(Math.floor(Math.random() * 4));
+		setShowHint(false);
 		prop && setScores(prev => prev - 1);
 	};
 	
@@ -60,11 +61,12 @@ const Game = () => {
 		if (rightAnswer === index) {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setOnGetAnswer(false);
 				setResult({ status: true, text: 'Right' });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
+					setOnGetAnswer(false);
 					setResult({ status: false, text: '' });
+					setShowHint(false);
 					nextLevel();
 				}, 1500)
 			}, 1500);
@@ -72,10 +74,10 @@ const Game = () => {
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setOnGetAnswer(false);
 				setResult({ status: true, text: 'Wrong' });
 				setScores(prev => prev - 1);
 				setTimeout(() => {
+					setOnGetAnswer(false);
 					setResult({ status: false, text: '' });
 				}, 1500)
 			}, 1500);
@@ -138,8 +140,8 @@ const Game = () => {
 				
 				<div className="df">
 					<div className="hint_box">
-						{showHint && <div className="hint_text"><span>{rightAnswer.hint}test</span></div>}
-						<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+						{showHint && <div className="hint_text"><span>{answers[rightAnswer].hint}</span></div>}
+						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onClickHint()}
 						>
@@ -147,11 +149,14 @@ const Game = () => {
 						</button>
 					</div>
 					
-					<button className="top__btn" onClick={() => restartGame()} onMouseDown={clickSound}>
+					<button className={`top__btn ${onGetAnswer ? 'disabled' : null}`}
+					        onClick={() => restartGame()}
+					        onMouseDown={clickSound}
+					>
 						<Icon.RotateCcw/>
 					</button>
 					
-					<button className={`top__btn ${scores >= 10 || scores <= -10 ? 'disabled' : null}`}
+					<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
 					        onMouseDown={clickSound}
 					        onClick={() => nextLevel('skip')}
 					>
@@ -179,8 +184,8 @@ const Game = () => {
 					<button onClick={() => onChooseAnswer(index)}
 					        key={index}
 					        onMouseDown={clickSound}
-					        className={`buttons__answer ${(scores >= 10 || scores <= -10) ? 'disabled' : ''}
-					        ${onGetAnswer === true && selectedAnswer === index ? 'onGetAnswer_btn' : ''}`}
+					        className={`buttons__answer ${(scores >= 10 || scores <= -10 || onGetAnswer) ? 'disabled' : ''}
+					        ${onGetAnswer && selectedAnswer === index ? 'onGetAnswer_btn' : ''}`}
 					>
 						{item.label}
 					</button>)}

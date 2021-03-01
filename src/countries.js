@@ -1104,7 +1104,7 @@ export const countriesRU = [
 	},
 	{
 		"value": "CF",
-		"label": "Центральноафриканская Республика",
+		"label": "ЦАР",
 		"hint": "Банги"
 	},
 	{
