@@ -128,7 +128,7 @@
 .disabled {
   pointer-events: none;
   color: #5d656e !important;
-  opacity: .6 !important;
+  opacity: .8 !important;
 }
 
 .scores {
@@ -246,7 +246,7 @@
 
 .hint_text {
   font-size: 21px;
-  padding: 7px;
+  padding: 6px 15px;
   color: #282c34;
   display: flex;
   align-items: center;
@@ -280,7 +280,24 @@
 .help_item {
   button {
     opacity: 1;
+    font-size: 23px;
   }
+}
+
+.footer_links_box {
+  padding: 20px 30px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.link_img__git {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.link_img__rs {
+  width: 80px;
 }
 
 @media (max-width: 600px) {
@@ -323,7 +340,7 @@
   }
 
   .hint_text {
-    height: 16px;
+    height: 18px;
   }
 
   .hint_absolute {
@@ -378,5 +395,14 @@
   .help_box {
     top: 65px;
     left: 135px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 750px) {
+  .buttons_bottom button {
+    height: 35px;
+  }
+  .scores {
+    top: 100px;
   }
 }

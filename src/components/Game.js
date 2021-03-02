@@ -73,7 +73,7 @@ const Game = () => {
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно'});
+				setResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
 				setScores(prev => prev - 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
@@ -97,7 +97,7 @@ const Game = () => {
 	const onChangeLang = () => {
 		setLang(!lang);
 		setAnswers([]);
-		if(showHint) setShowHint(false);
+		if (showHint) setShowHint(false);
 	}
 	
 	const onClickSettings = () => {
@@ -142,7 +142,10 @@ const Game = () => {
 					</div>
 					
 					<div className={`lang_box ${!isSettings && 'hidden'}`}>
-						<button className="top__btn" onMouseDown={clickSound} onClick={() => onChangeLang()}>
+						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
+						        onMouseDown={clickSound}
+						        onClick={() => onChangeLang()}
+						>
 							{lang ? 'RU' : 'ENG'}
 						</button>
 					</div>
@@ -176,12 +179,30 @@ const Game = () => {
 			</div>
 			
 			{showHelp && <div className="help_box">
-				<div className="help_item buttons mb5"><button><Icon.Volume2/></button> - On/Off music(M)</div>
-				<div className="help_item buttons mb5"><button><Icon.Bell/></button> - On/Off sound(M)</div>
-				<div className="help_item buttons mb5"><button className="top__btn">ENG</button> - Change language(L)</div>
-				<div className="help_item buttons mb5"><button><Icon.AlertCircle/></button> - Hint</div>
-				<div className="help_item buttons mb5"><button><Icon.RefreshCcw/></button> - Restart game(R)</div>
-				<div className="help_item buttons mb5"><button><Icon.ChevronsRight/></button> - Skip round(S)</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.Volume2/></button>
+					- On/Off music(M)
+				</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.Bell/></button>
+					- On/Off sound(M)
+				</div>
+				<div className="help_item buttons mb5">
+					<button className="top__btn">ENG</button>
+					- Change language(L)
+				</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.AlertCircle/></button>
+					- Hint
+				</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.RefreshCcw/></button>
+					- Restart game(R)
+				</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.ChevronsRight/></button>
+					- Skip round(S)
+				</div>
 			</div>}
 			
 			<span className="scores">{scores}/10</span>
