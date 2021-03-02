@@ -128,7 +128,7 @@
 .disabled {
   pointer-events: none;
   color: #5d656e !important;
-  opacity: .8 !important;
+  opacity: .7 !important;
 }
 
 .scores {
@@ -298,6 +298,24 @@
 
 .link_img__rs {
   width: 80px;
+}
+
+.game_result {
+  position: absolute;
+  font-size: 150px;
+  padding: 0 45px;
+  border-bottom: 3px solid;
+  user-select: none;
+
+  &__win {
+    color: #00ff26;
+    user-select: none;
+  }
+
+  &__lost {
+    color: #ec394e;
+    user-select: none;
+  }
 }
 
 @media (max-width: 600px) {

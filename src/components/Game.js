@@ -15,7 +15,7 @@ const Game = () => {
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [onGetAnswer, setOnGetAnswer] = useState(false);
-	const [scores, setScores] = useState(0);
+	const [scores, setScores] = useState(8);
 	const [isSounds, setIsSounds] = useState(false);
 	const [isMusic, setIsMusic] = useState(false);
 	const [isSettings, setIsSettings] = useState(false);
@@ -23,7 +23,7 @@ const Game = () => {
 	const [showHelp, setShowHelp] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
 	const musicRef = useRef();
-	const [result, setResult] = useState({
+	const [levelResult, setLevelResult] = useState({
 		status: false,
 		text: ''
 	});
@@ -52,32 +52,32 @@ const Game = () => {
 		setRandomAnswers();
 		setRightAnswer(Math.floor(Math.random() * 4));
 		setShowHint(false);
-		prop && setScores(prev => prev - 1);
+		prop && setScores(prev => prev - 2);
 	};
-	
+
 	const onChooseAnswer = index => {
 		setSelectedAnswer(index);
 		if (rightAnswer === index) {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
+				setLevelResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
-					setResult({ status: false, text: '' });
+					setLevelResult({ status: false, text: '' });
 					setShowHint(false);
-					nextLevel();
+					if(scores < 9 && scores > -9) nextLevel();
 				}, 1500)
 			}, 1500);
 		}
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
+				setLevelResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
 				setScores(prev => prev - 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
-					setResult({ status: false, text: '' });
+					setLevelResult({ status: false, text: '' });
 				}, 1500)
 			}, 1500);
 		}
@@ -103,6 +103,11 @@ const Game = () => {
 	const onClickSettings = () => {
 		setIsSettings(!isSettings);
 		setShowHelp(false);
+	};
+	
+	const renderGameResult = () => {
+		if (scores >= 10) return <div className="game_result game_result__win">You Win</div>;
+		else if (scores <= -10) return <div className="game_result game_result__lost">You lost</div>
 	};
 	
 	useHotkeys('n', () => nextLevel('skip')); //skip round
@@ -213,9 +218,9 @@ const Game = () => {
 				     alt=""/>
 			</div>
 			
-			{result.status
-			 ? <span className={`result_text ${(result.text === 'Right' || result.text === 'Правильно') ? 'success' : 'error'}`}>
-				 {result.text}
+			{levelResult.status
+			 ? <span className={`result_text ${(levelResult.text === 'Right' || levelResult.text === 'Правильно') ? 'success' : 'error'}`}>
+				 {levelResult.text}
 			</span>
 			 : null}
 			
@@ -231,6 +236,8 @@ const Game = () => {
 					</button>)}
 			</div>
 		</div>
+		
+		{renderGameResult()}
 	</div>;
 };
 
