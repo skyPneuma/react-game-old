@@ -20,6 +20,7 @@ const Game = () => {
 	const [isMusic, setIsMusic] = useState(false);
 	const [isSettings, setIsSettings] = useState(false);
 	const [showHint, setShowHint] = useState(false);
+	const [showHelp, setShowHelp] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
 	const musicRef = useRef();
 	const [result, setResult] = useState({
@@ -99,6 +100,11 @@ const Game = () => {
 		if(showHint) setShowHint(false);
 	}
 	
+	const onClickSettings = () => {
+		setIsSettings(!isSettings);
+		setShowHelp(false);
+	};
+	
 	useHotkeys('n', () => nextLevel('skip')); //skip round
 	useHotkeys('r', () => restartGame()); //restart game
 	useHotkeys('l', () => setLang(prev => !prev)); //change language
@@ -113,7 +119,7 @@ const Game = () => {
 		<div className="content_box">
 			<div className="buttons top_buttons__box">
 				<div className="df">
-					<button className="top__btn" onMouseDown={clickSound} onClick={() => setIsSettings(!isSettings)}>
+					<button className="top__btn" onMouseDown={clickSound} onClick={() => onClickSettings()}>
 						<Icon.Settings/>
 					</button>
 					
@@ -130,7 +136,7 @@ const Game = () => {
 					</div>
 					
 					<div className={`${!isSettings && 'hidden'}`}>
-						<button className="top__btn mr5" onMouseDown={clickSound} onClick={() => console.log("Help")}>
+						<button className="top__btn mr5" onMouseDown={clickSound} onClick={() => setShowHelp(!showHelp)}>
 							<Icon.HelpCircle/>
 						</button>
 					</div>
@@ -168,6 +174,15 @@ const Game = () => {
 					</button>
 				</div>
 			</div>
+			
+			{showHelp && <div className="help_box">
+				<div className="help_item buttons mb5"><button><Icon.Volume2/></button> - On/Off music(M)</div>
+				<div className="help_item buttons mb5"><button><Icon.Bell/></button> - On/Off sound(M)</div>
+				<div className="help_item buttons mb5"><button className="top__btn">ENG</button> - Change language(L)</div>
+				<div className="help_item buttons mb5"><button><Icon.AlertCircle/></button> - Hint</div>
+				<div className="help_item buttons mb5"><button><Icon.RefreshCcw/></button> - Restart game(R)</div>
+				<div className="help_item buttons mb5"><button><Icon.ChevronsRight/></button> - Skip round(S)</div>
+			</div>}
 			
 			<span className="scores">{scores}/10</span>
 			
