@@ -1,3 +1,15 @@
+* {
+  font-family: 'Amatic SC', cursive;
+}
+
+.success {
+  color: #259035;
+}
+
+.error {
+  color: #ec394e;
+}
+
 .df {
   display: flex;
 }
@@ -40,9 +52,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Akaya Telivigala', cursive;
     color: #282c34;
-    font-size: 20px;
+    font-size: 30px;
     padding: 5px;
     cursor: pointer;
     border-radius: 5px;
@@ -90,8 +101,7 @@
 
   button {
     width: 45%;
-    min-height: 40px;
-    max-height: 40px;
+    height: 40px;
     margin-bottom: 5px;
 
     &:nth-child(2n+1) {
@@ -118,13 +128,12 @@
 }
 
 .scores {
-  font-family: 'Akaya Telivigala', cursive;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 600;
   color: #282c34;
   opacity: .7;
   position: absolute;
-  right: 20px;
+  right: 15px;
   top: 120px;
   user-select: none;
 }
@@ -221,14 +230,6 @@
   user-select: none;
 }
 
-.success {
-  color: #259035;
-}
-
-.error {
-  color: #ec394e;
-}
-
 .onGetAnswer_btn {
   background: #78C58D;
   opacity: .5;
@@ -240,8 +241,7 @@
 }
 
 .hint_text {
-  font-family: 'Akaya Telivigala', cursive;
-  font-size: 19px;
+  font-size: 21px;
   padding: 7px;
   color: #282c34;
   display: flex;
@@ -249,7 +249,91 @@
   justify-content: center;
   border-radius: 5px;
   background: white;
-  opacity: .6;
+  opacity: .8;
   margin-right: 5px;
   user-select: none;
+}
+
+@media (max-width: 600px) {
+  .top_buttons__box {
+    top: 19px;
+    left: 10px;
+
+    .top__btn {
+      min-height: 30px;
+      max-height: 30px;
+      width: 30px;
+      font-size: 18px;
+    }
+  }
+  .sounds_icon {
+    height: 30px;
+
+    svg {
+      width: 18px;
+    }
+
+    .lang_box {
+      button {
+        font-size: 10px
+      }
+    }
+  }
+  .buttons {
+    .buttons__answer {
+      height: 20px;
+      font-size: 18px;
+    }
+  }
+
+  .scores {
+    top: 80px;
+    font-size: 40px;
+  }
+
+  .hint_text {
+    height: 16px;
+  }
+
+  .hint_absolute {
+    position: absolute;
+    opacity: 1;
+    top: 35px;
+    right: 64px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .top_buttons__box {
+    top: 19px;
+    left: 10px;
+
+    .top__btn {
+      min-height: 40px;
+      max-height: 40px;
+      width: 40px;
+      font-size: 24px;;
+    }
+  }
+  .sounds_icon {
+    height: 40px;
+  }
+  .buttons {
+    .buttons__answer {
+      height: 30px;
+      font-size: 24px;
+    }
+  }
+
+  .scores {
+    top: 95px;
+    font-size: 40px;
+  }
+
+  .hint_absolute {
+    position: absolute;
+    opacity: 1;
+    top: 45px;
+    right: 85px;
+  }
 }

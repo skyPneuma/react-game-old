@@ -9,7 +9,7 @@ import MusicSettingsPanel from "./MusicSettingsPanel/MusicSettingsPanel";
 import './styles.scss';
 
 const Game = () => {
-	const [lang, setLang] = useState(true);
+	const [lang, setLang] = useState(false);
 	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
@@ -93,6 +93,12 @@ const Game = () => {
 		setShowHint(!showHint);
 	};
 	
+	const onChangeLang = () => {
+		setLang(!lang);
+		setAnswers([]);
+		if(showHint) setShowHint(false);
+	}
+	
 	useHotkeys('n', () => nextLevel('skip')); //skip round
 	useHotkeys('r', () => restartGame()); //restart game
 	useHotkeys('l', () => setLang(prev => !prev)); //change language
@@ -129,8 +135,8 @@ const Game = () => {
 						</button>
 					</div>
 					
-					<div className={`${!isSettings && 'hidden'}`}>
-						<button className="top__btn" onMouseDown={clickSound} onClick={() => (setLang(!lang), setAnswers([]))}>
+					<div className={`lang_box ${!isSettings && 'hidden'}`}>
+						<button className="top__btn" onMouseDown={clickSound} onClick={() => onChangeLang()}>
 							{lang ? 'RU' : 'ENG'}
 						</button>
 					</div>
@@ -138,7 +144,7 @@ const Game = () => {
 				
 				<div className="df">
 					<div className="hint_box">
-						{showHint && <div className="hint_text"><span>{answers[rightAnswer].hint}</span></div>}
+						{showHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer].hint}</span></div>}
 						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onClickHint()}
