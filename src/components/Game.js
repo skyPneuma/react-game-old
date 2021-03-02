@@ -6,6 +6,7 @@ import { countriesENG, countriesRU } from "../countries";
 import button from '../media/sounds/button.mp3';
 import backgroundMusic from '../media/sounds/backgroundMusic.mp3';
 import MusicSettingsPanel from "./MusicSettingsPanel/MusicSettingsPanel";
+import Statistics from "./Statistics";
 import './styles.scss';
 
 const Game = () => {
@@ -15,13 +16,22 @@ const Game = () => {
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [onGetAnswer, setOnGetAnswer] = useState(false);
-	const [scores, setScores] = useState(8);
+	const [scores, setScores] = useState(9);
 	const [isSounds, setIsSounds] = useState(false);
 	const [isMusic, setIsMusic] = useState(false);
 	const [isSettings, setIsSettings] = useState(false);
-	const [showHint, setShowHint] = useState(false);
-	const [showHelp, setShowHelp] = useState(false);
+	const [isHint, setIsHint] = useState(false);
+	const [isHelp, setIsHelp] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
+	const [isStatsOpened, setIsStatsOpened] = useState(false);
+	const statsRows = [];
+	const [statistics, setStatistics] = useState({
+		name: '',
+		rightCount: 0,
+		wrongCount: 0,
+		skipped: 0,
+		status: ''
+	});
 	const musicRef = useRef();
 	const [levelResult, setLevelResult] = useState({
 		status: false,
@@ -41,6 +51,11 @@ const Game = () => {
 		}
 	}, [answers, lang]);
 	
+	useEffect(() => {
+		if (scores >= 9 || scores <= -9) statsRows.push(statistics);
+	}, [scores, statistics]);
+	console.log(statsRows)
+	
 	const setRandomAnswers = () => {
 		let arr = [];
 		for (let i = arr.length; i < 4; i++) arr.push((lang ? countriesRU : countriesENG)[getRandomCountry()]);
@@ -51,22 +66,26 @@ const Game = () => {
 	const nextLevel = prop => {
 		setRandomAnswers();
 		setRightAnswer(Math.floor(Math.random() * 4));
-		setShowHint(false);
+		setIsHint(false);
+		setIsStatsOpened(false);
 		prop && setScores(prev => prev - 2);
+		prop && setStatistics({...statistics, skipped: statistics.skipped + 1 });
 	};
 
 	const onChooseAnswer = index => {
 		setSelectedAnswer(index);
+		setIsStatsOpened(false);
 		if (rightAnswer === index) {
 			setOnGetAnswer(true);
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
+				setStatistics({...statistics, rightCount: statistics.rightCount + 1 });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
 					setLevelResult({ status: false, text: '' });
-					setShowHint(false);
-					if(scores < 9 && scores > -9) nextLevel();
+					setIsHint(false);
+					if (scores < 9 && scores > -9) nextLevel();
 				}, 1500)
 			}, 1500);
 		}
@@ -74,6 +93,7 @@ const Game = () => {
 			setOnGetAnswer(true);
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
+				setStatistics({...statistics, wrongCount: statistics.wrongCount + 1 });
 				setScores(prev => prev - 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
@@ -86,23 +106,26 @@ const Game = () => {
 	const restartGame = () => {
 		nextLevel();
 		setScores(0);
-		setShowHint(false);
+		setIsHint(false);
+		setIsStatsOpened(false);
 	};
 	
 	const onClickHint = () => {
-		if (!showHint) setScores(prev => prev - 1);
-		setShowHint(!showHint);
+		if (!isHint) setScores(prev => prev - 1);
+		setIsHint(prev => !prev);
+		setIsStatsOpened(false);
 	};
 	
 	const onChangeLang = () => {
 		setLang(!lang);
 		setAnswers([]);
-		if (showHint) setShowHint(false);
-	}
+		setIsStatsOpened(false);
+		if (isHint) setIsHint(false);
+	};
 	
 	const onClickSettings = () => {
 		setIsSettings(!isSettings);
-		setShowHelp(false);
+		setIsHelp(false);
 	};
 	
 	const renderGameResult = () => {
@@ -113,6 +136,7 @@ const Game = () => {
 	useHotkeys('n', () => nextLevel('skip')); //skip round
 	useHotkeys('r', () => restartGame()); //restart game
 	useHotkeys('l', () => setLang(prev => !prev)); //change language
+	useHotkeys('s', () => setIsStatsOpened(prev => !prev)); //show statistics
 	useHotkeys('m', () => { // enable/disable music and sounds
 		setIsSounds(prev => !prev);
 		setIsMusic(prev => !prev);
@@ -141,7 +165,7 @@ const Game = () => {
 					</div>
 					
 					<div className={`${!isSettings && 'hidden'}`}>
-						<button className="top__btn mr5" onMouseDown={clickSound} onClick={() => setShowHelp(!showHelp)}>
+						<button className="top__btn mr5" onMouseDown={clickSound} onClick={() => setIsHelp(!isHelp)}>
 							<Icon.HelpCircle/>
 						</button>
 					</div>
@@ -158,7 +182,7 @@ const Game = () => {
 				
 				<div className="df">
 					<div className="hint_box">
-						{showHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer].hint}</span></div>}
+						{isHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer].hint}</span></div>}
 						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onClickHint()}
@@ -183,7 +207,7 @@ const Game = () => {
 				</div>
 			</div>
 			
-			{showHelp && <div className="help_box">
+			{isHelp && <div className="help_box">
 				<div className="help_item buttons mb5">
 					<button><Icon.Volume2/></button>
 					- On/Off music(M)
@@ -206,7 +230,11 @@ const Game = () => {
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.ChevronsRight/></button>
-					- Skip round(S)
+					- Skip round(N)
+				</div>
+				<div className="help_item buttons mb5">
+					<button><Icon.List/></button>
+					- Statistics(S)
 				</div>
 			</div>}
 			
@@ -234,6 +262,16 @@ const Game = () => {
 					>
 						{item.label}
 					</button>)}
+			</div>
+			
+			<div className="statistics_box">
+				<button className="statistics_btn"
+				        onClick={() => setIsStatsOpened(!isStatsOpened)}
+				        onMouseDown={clickSound}
+				>
+					<Icon.List/>
+				</button>
+				{isStatsOpened && <Statistics rows={statsRows}/>}
 			</div>
 		</div>
 		
