@@ -27,8 +27,6 @@ const Game = () => {
 		text: ''
 	});
 	
-	document.addEventListener('click', () => musicRef.current?.play());
-	
 	useEffect(() => {
 		if (musicRef.current) musicRef.current.volume = isMusic ? +isMusic : 0;
 	}, [isMusic]);
@@ -132,7 +130,7 @@ const Game = () => {
 					</div>
 					
 					<div className={`${!isSettings && 'hidden'}`}>
-						<button className="top__btn" onMouseDown={clickSound} onClick={() => setLang(!lang)}>
+						<button className="top__btn" onMouseDown={clickSound} onClick={() => (setLang(!lang), setAnswers([]))}>
 							{lang ? 'RU' : 'ENG'}
 						</button>
 					</div>
