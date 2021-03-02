@@ -6,7 +6,7 @@ const STEP = 0.1;
 const MIN = 0;
 const MAX = 100;
 
-const Volume = ({ musicRef }) => {
+const MusicSettingsPanel = ({ musicRef }) => {
 	const [state, setState] = useState({
 		toggled: false,
 		volume: [100],
@@ -47,14 +47,6 @@ const Volume = ({ musicRef }) => {
 					</div>
 				)}
 			/>
-		</div>
-	);
-};
-
-const MusicSettingsPanel = ({ musicRef }) => {
-	return (
-		<div>
-			<Volume musicRef={musicRef}/>
 		</div>
 	);
 };
