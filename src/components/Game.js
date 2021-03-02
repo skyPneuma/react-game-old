@@ -40,7 +40,7 @@ const Game = () => {
 			setAnswers(arr);
 			setRightAnswer(Math.floor(Math.random() * 4))
 		}
-	}, [answers, getRandomCountry]);
+	}, [answers, lang]);
 	
 	const setRandomAnswers = () => {
 		let arr = [];
@@ -61,7 +61,7 @@ const Game = () => {
 		if (rightAnswer === index) {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setResult({ status: true, text: 'Right' });
+				setResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
@@ -74,7 +74,7 @@ const Game = () => {
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
-				setResult({ status: true, text: 'Wrong' });
+				setResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно'});
 				setScores(prev => prev - 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
@@ -95,10 +95,10 @@ const Game = () => {
 		setShowHint(!showHint);
 	};
 	
-	useHotkeys('n', () => nextLevel('skip'));
-	useHotkeys('r', () => restartGame());
-	useHotkeys('l', () => setLang(prev => !prev));
-	useHotkeys('m', () => {
+	useHotkeys('n', () => nextLevel('skip')); //skip round
+	useHotkeys('r', () => restartGame()); //restart game
+	useHotkeys('l', () => setLang(prev => !prev)); //change language
+	useHotkeys('m', () => { // enable/disable music and sounds
 		setIsSounds(prev => !prev);
 		setIsMusic(prev => !prev);
 	});
@@ -153,7 +153,7 @@ const Game = () => {
 					        onClick={() => restartGame()}
 					        onMouseDown={clickSound}
 					>
-						<Icon.RotateCcw/>
+						<Icon.RefreshCcw/>
 					</button>
 					
 					<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
@@ -173,8 +173,8 @@ const Game = () => {
 				     alt=""/>
 			</div>
 			
-			{result.status === true
-			 ? <span className={`result_text ${result.text === 'Right' ? 'success' : 'error'}`}>
+			{result.status
+			 ? <span className={`result_text ${(result.text === 'Right' || result.text === 'Правильно') ? 'success' : 'error'}`}>
 				 {result.text}
 			</span>
 			 : null}
