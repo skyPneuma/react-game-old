@@ -10,7 +10,9 @@ import Statistics from "./Statistics";
 import './styles.scss';
 
 const Game = () => {
-	const initialStats = localStorage.getItem('statistics');
+	const musicRef = useRef();
+	const [isSounds, setIsSounds] = useState(false);
+	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.1 });
 	const [lang, setLang] = useState(false);
 	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
@@ -18,14 +20,13 @@ const Game = () => {
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [onGetAnswer, setOnGetAnswer] = useState(false);
 	const [scores, setScores] = useState(9);
-	const [isSounds, setIsSounds] = useState(false);
 	const [isMusic, setIsMusic] = useState(false);
 	const [isSettings, setIsSettings] = useState(false);
 	const [isHint, setIsHint] = useState(false);
 	const [isHelp, setIsHelp] = useState(false);
-	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
 	const [isStatsOpened, setIsStatsOpened] = useState(false);
 	const [isGameOver, setIsGameOver] = useState(false);
+	const initialStats = localStorage.getItem('statistics');
 	const [statistics, setStatistics] = useState(initialStats ? JSON.parse(initialStats) : []);
 	const [statsTemplate, setStatsTemplate] = useState({
 		rightCount: 0,
@@ -33,7 +34,6 @@ const Game = () => {
 		skipped: 0,
 		status: null
 	});
-	const musicRef = useRef();
 	const [levelResult, setLevelResult] = useState({
 		status: false,
 		text: ''
@@ -133,10 +133,10 @@ const Game = () => {
 	};
 	
 	const onChangeLang = () => {
-		setLang(!lang);
+		setLang(prev => !prev);
 		setAnswers([]);
 		setIsStatsOpened(false);
-		if (isHint) setIsHint(false);
+		setIsHint(false);
 	};
 	
 	const onClickSettings = () => {
@@ -146,7 +146,7 @@ const Game = () => {
 	
 	useHotkeys('n', () => nextLevel('skip')); //skip round
 	useHotkeys('r', () => restartGame()); //restart game
-	useHotkeys('l', () => setLang(prev => !prev)); //change language
+	useHotkeys('l', () => onChangeLang()); //change language
 	useHotkeys('s', () => setIsStatsOpened(prev => !prev)); //show statistics
 	useHotkeys('m', () => { // enable/disable music and sounds
 		setIsSounds(prev => !prev);
@@ -193,7 +193,7 @@ const Game = () => {
 				
 				<div className="df">
 					<div className="hint_box">
-						{isHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer].hint}</span></div>}
+						{isHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer]?.hint}</span></div>}
 						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onClickHint()}
