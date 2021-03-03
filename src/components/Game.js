@@ -135,7 +135,6 @@ const Game = () => {
 	const onChangeLang = () => {
 		setLang(prev => !prev);
 		setAnswers([]);
-		setIsStatsOpened(false);
 		setIsHint(false);
 	};
 	
@@ -295,7 +294,7 @@ const Game = () => {
 				>
 					<Icon.List/>
 				</button>
-				{isStatsOpened && <Statistics rows={statistics}/>}
+				{isStatsOpened && <Statistics rows={statistics} lang={lang}/>}
 			</div>
 			
 			<div className="fullscreen_btn_box buttons">
