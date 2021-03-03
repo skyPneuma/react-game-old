@@ -305,8 +305,8 @@ const Game = () => {
 		</div>
 		
 		{(isGameOver && scores >= 100)
-		 ? <div className="game_result game_result__win">You Win</div>
-		 : (isGameOver && scores <= -100 ? <div className="game_result game_result__lost">You lost</div> : null)
+		 ? <div className="game_result game_result__win">{lang ? 'You Win' : 'Победа'}</div>
+		 : (isGameOver && scores <= -100 ? <div className="game_result game_result__lost">{!lang ? 'You lost' : 'Поражение'}</div> : null)
 		}
 	</div>;
 };
