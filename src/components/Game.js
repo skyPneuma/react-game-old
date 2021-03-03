@@ -10,6 +10,7 @@ import Statistics from "./Statistics";
 import './styles.scss';
 
 const Game = () => {
+	const initialStats = localStorage.getItem('statistics');
 	const [lang, setLang] = useState(false);
 	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
@@ -24,19 +25,23 @@ const Game = () => {
 	const [isHelp, setIsHelp] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.25 });
 	const [isStatsOpened, setIsStatsOpened] = useState(false);
-	const statsRows = [];
-	const [statistics, setStatistics] = useState({
-		name: '',
+	const [isGameOver, setIsGameOver] = useState(false);
+	const [statistics, setStatistics] = useState(initialStats ? JSON.parse(initialStats) : []);
+	const [statsTemplate, setStatsTemplate] = useState({
 		rightCount: 0,
 		wrongCount: 0,
 		skipped: 0,
-		status: ''
+		status: null
 	});
 	const musicRef = useRef();
 	const [levelResult, setLevelResult] = useState({
 		status: false,
 		text: ''
 	});
+	
+	useEffect(() => {
+		localStorage.setItem('statistics', JSON.stringify(statistics));
+	}, [statistics]);
 	
 	useEffect(() => {
 		if (musicRef.current) musicRef.current.volume = isMusic ? +isMusic : 0;
@@ -52,9 +57,10 @@ const Game = () => {
 	}, [answers, lang]);
 	
 	useEffect(() => {
-		if (scores >= 9 || scores <= -9) statsRows.push(statistics);
-	}, [scores, statistics]);
-	console.log(statsRows)
+		if (scores >= 10 || scores <= -10) setIsGameOver(true);
+		if (scores >= 10) setStatistics([{ ...statsTemplate, status: true }, ...statistics]);
+		if (scores <= -10) setStatistics([{ ...statsTemplate, status: false }, ...statistics]);
+	}, [scores]);
 	
 	const setRandomAnswers = () => {
 		let arr = [];
@@ -69,9 +75,9 @@ const Game = () => {
 		setIsHint(false);
 		setIsStatsOpened(false);
 		prop && setScores(prev => prev - 2);
-		prop && setStatistics({...statistics, skipped: statistics.skipped + 1 });
+		prop && setStatsTemplate({ ...statsTemplate, skipped: statsTemplate.skipped + 1 });
 	};
-
+	
 	const onChooseAnswer = index => {
 		setSelectedAnswer(index);
 		setIsStatsOpened(false);
@@ -79,26 +85,30 @@ const Game = () => {
 			setOnGetAnswer(true);
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
-				setStatistics({...statistics, rightCount: statistics.rightCount + 1 });
+				setStatsTemplate({ ...statsTemplate, rightCount: statsTemplate.rightCount + 1 });
 				setScores(prev => prev + 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
 					setLevelResult({ status: false, text: '' });
+					setIsGameOver(false);
+					setIsStatsOpened(true);
 					setIsHint(false);
 					if (scores < 9 && scores > -9) nextLevel();
-				}, 1500)
+				}, 2000)
 			}, 1500);
 		}
 		else {
 			setOnGetAnswer(true);
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
-				setStatistics({...statistics, wrongCount: statistics.wrongCount + 1 });
+				setStatsTemplate({ ...statsTemplate, wrongCount: statsTemplate.wrongCount + 1 });
 				setScores(prev => prev - 1);
 				setTimeout(() => {
 					setOnGetAnswer(false);
 					setLevelResult({ status: false, text: '' });
-				}, 1500)
+					setIsGameOver(false);
+					setIsStatsOpened(true);
+				}, 2000)
 			}, 1500);
 		}
 	};
@@ -108,6 +118,12 @@ const Game = () => {
 		setScores(0);
 		setIsHint(false);
 		setIsStatsOpened(false);
+		setStatsTemplate({
+			rightCount: 0,
+			wrongCount: 0,
+			skipped: 0,
+			status: null
+		});
 	};
 	
 	const onClickHint = () => {
@@ -126,11 +142,6 @@ const Game = () => {
 	const onClickSettings = () => {
 		setIsSettings(!isSettings);
 		setIsHelp(false);
-	};
-	
-	const renderGameResult = () => {
-		if (scores >= 10) return <div className="game_result game_result__win">You Win</div>;
-		else if (scores <= -10) return <div className="game_result game_result__lost">You lost</div>
 	};
 	
 	useHotkeys('n', () => nextLevel('skip')); //skip round
@@ -271,11 +282,13 @@ const Game = () => {
 				>
 					<Icon.List/>
 				</button>
-				{isStatsOpened && <Statistics rows={statsRows}/>}
+				{isStatsOpened && <Statistics rows={statistics}/>}
 			</div>
 		</div>
 		
-		{renderGameResult()}
+		{isGameOver ? <div className="game_result game_result__win">
+			{scores >= 10 ? 'You Win' : scores <= -10 ? 'You lost' : null}
+		</div> : null}
 	</div>;
 };
 

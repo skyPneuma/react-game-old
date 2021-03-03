@@ -22,6 +22,7 @@ const App = () => {
 			
 			 : <Game/>}
 			<div className="footer_links_box">
+				<span className="footer_year">2021</span>
 				<a href="https://github.com/skyPneuma" target="_blank">
 					<img className="link_img__git" src={git} alt=""/>
 				</a>

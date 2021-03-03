@@ -2,12 +2,10 @@ import React from 'react';
 import './styles.scss';
 
 const Statistics = ({ rows }) => {
-
 	return <div className="statistics_table_box">
 		<table>
 			<thead>
 			<tr>
-				<th>Name</th>
 				<th>Right</th>
 				<th>Wrong</th>
 				<th>Skipped</th>
@@ -17,11 +15,10 @@ const Statistics = ({ rows }) => {
 			
 			<tbody>
 			{rows.map((row, index) => <tr key={index}>
-				<td>{row.name}</td>
 				<td className="success">{row.rightCount}</td>
 				<td className="error">{row.wrongCount}</td>
 				<td className="error">{row.skipped}</td>
-				<td className={`${row.status === 'Win' ? 'success' : 'error'}`}>{row.status}</td>
+				<td className={`${row.status ? 'success' : 'error'}`}>{row.status ? 'Win' : 'Lost'}</td>
 			</tr>
 			)}
 			</tbody>

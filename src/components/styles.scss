@@ -286,10 +286,18 @@
 }
 
 .footer_links_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px 30px;
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.footer_year {
+  margin-right: 15px;
+  font-size: 24px;
 }
 
 .link_img__git {
@@ -324,9 +332,9 @@
   top: 120px;
   display: flex;
   align-items: flex-start;
-  width: 85%;
+  width: 95%;
   height: 60%;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 .statistics_btn {
@@ -342,6 +350,10 @@
   height: 40px;
   min-width: 40px;
   margin-right: 5px;
+
+  &:active {
+    transform: translateY(2px);
+  }
 
   &:focus {
     outline: none;
@@ -365,17 +377,12 @@
       th {
         padding: 5px;
         border: 1px solid #848d97;
-        &:first-child {
-          width: 30%;
-        }
+        width: 25%;
       }
 
       td {
         padding: 5px;
-        text-align: right;
-        &:first-child {
-          text-align: left;
-        }
+        text-align: center;
       }
     }
   }
@@ -435,6 +442,26 @@
     top: 55px;
     left: 100px;
   }
+
+  .statistics_box {
+    top: 80px;
+    padding: 0 10px;
+    width: 95%;
+  }
+
+  .statistics_btn {
+    height: 30px;
+    max-width: 30px;
+    min-width: 30px;
+  }
+
+  .statistics_table_box {
+    width: 85%;
+
+    table {
+      font-size: 18px;
+    }
+  }
 }
 
 @media (min-width: 601px) and (max-width: 700px) {
@@ -477,11 +504,23 @@
     top: 65px;
     left: 120px;
   }
+
+  .statistics_box {
+    top: 95px;
+    padding: 0 10px;
+    width: 95%;
+  }
 }
 
 @media (min-width: 701px) and (max-width: 750px) {
   .buttons_bottom button {
     height: 35px;
+  }
+
+  .statistics_box {
+    top: 105px;
+    padding: 0 20px;
+    width: 95%;
   }
 
   .hint_absolute {
