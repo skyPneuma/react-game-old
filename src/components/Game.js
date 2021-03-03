@@ -229,35 +229,35 @@ const Game = () => {
 			{isHelp && <div className="help_box">
 				<div className="help_item buttons mb5">
 					<button><Icon.Volume2/></button>
-					- On/Off music(M)
+					- {lang ? 'Вкл/Выкл музыку' : 'On/Off music'}(M)
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.Bell/></button>
-					- On/Off sound(M)
+					- {lang ? 'Вкл/Выкл звуки' : 'On/Off sound'}(M)
 				</div>
 				<div className="help_item buttons mb5">
 					<button className="top__btn">ENG</button>
-					- Change language(L)
+					- {lang ? 'Смена языка' : 'Change language'}(L)
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.AlertCircle/></button>
-					- Hint
+					- {lang ? 'Подсказка' : 'Hint'}
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.RefreshCcw/></button>
-					- Restart game(R)
+					- {lang ? 'Начать заново' : 'Restart game'}(R)
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.ChevronsRight/></button>
-					- Skip round(N)
+					- {lang ? 'Пропустить раунд' : 'Skip round'}(N)
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Icon.List/></button>
-					- Statistics(S)
+					- {lang ? 'Статистика' : 'Statistics'}(S)
 				</div>
 				<div className="help_item buttons mb5">
 					<button><Maximize/></button>
-					- On/Off fullscreen
+					- {lang ? 'Вкл/Выкл полный экран' : 'On/Off fullscreen'}
 				</div>
 			</div>}
 			

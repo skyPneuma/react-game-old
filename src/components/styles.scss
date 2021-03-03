@@ -268,7 +268,7 @@
   position: absolute;
   background: #fff;
   opacity: .9;
-  width: 165px;
+  width: 187px;
   z-index: 1;
   padding: 30px 15px;
   display: flex;
@@ -458,6 +458,11 @@
   .help_box {
     top: 55px;
     left: 100px;
+    width: 165px;
+
+    .help_item {
+      font-size: 16px;
+    }
   }
 
   .statistics_box {
@@ -529,7 +534,7 @@
 
   .help_box {
     top: 65px;
-    left: 120px;
+    left: 100px;
   }
 
   .statistics_box {
@@ -564,7 +569,7 @@
 
   .help_box {
     top: 80px;
-    left: 130px;
+    left: 110px;
   }
 
   .scores {
