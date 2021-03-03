@@ -16,7 +16,7 @@ const App = () => {
 		<div className="wrapper">
 			{currentPage === 'start'
 			 ?
-			 <div className="buttons">
+			 <div className="buttons mb30">
 				 <button onClick={() => setCurrentPage('game')} onMouseDown={clickSound}>Start game</button>
 			 </div>
 			

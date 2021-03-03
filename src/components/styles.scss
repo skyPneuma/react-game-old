@@ -30,6 +30,10 @@
   margin-bottom: 5px;
 }
 
+.mb30 {
+  margin-bottom: 30px;
+}
+
 .content_box {
   position: relative;
 }
@@ -40,6 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .buttons {
@@ -287,26 +292,26 @@
 
 .footer_links_box {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   padding: 20px 30px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
 }
 
 .footer_year {
   margin-right: 15px;
   font-size: 24px;
+  user-select: none;
 }
 
 .link_img__git {
   width: 30px;
   margin-right: 20px;
+  user-select: none;
 }
 
 .link_img__rs {
   width: 80px;
+  user-select: none;
 }
 
 .game_result {
@@ -368,6 +373,7 @@
   padding: 15px;
   border-radius: 5px;
   user-select: none;
+  overflow-y: auto;
 
   table {
     width: 100%;
@@ -385,6 +391,17 @@
         text-align: center;
       }
     }
+  }
+}
+
+.fullscreen_btn_box {
+  position: absolute;
+  bottom: 125px;
+  left: 20px;
+
+  button {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -462,6 +479,16 @@
       font-size: 18px;
     }
   }
+
+  .fullscreen_btn_box {
+    bottom: 80px;
+    left: 10px;
+
+    button {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 @media (min-width: 601px) and (max-width: 700px) {
@@ -510,6 +537,11 @@
     padding: 0 10px;
     width: 95%;
   }
+
+  .fullscreen_btn_box {
+    bottom: 110px;
+    left: 10px;
+  }
 }
 
 @media (min-width: 701px) and (max-width: 750px) {
@@ -529,6 +561,7 @@
     top: 45px;
     right: 85px;
   }
+
   .help_box {
     top: 80px;
     left: 130px;
@@ -536,6 +569,10 @@
 
   .scores {
     top: 100px;
+  }
+
+  .fullscreen_btn_box {
+    bottom: 110px;
   }
 }
 

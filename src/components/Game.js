@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Maximize } from "react-feather";
 import { useHotkeys } from "react-hotkeys-hook";
 import useSound from 'use-sound';
 import * as Icon from 'react-feather';
@@ -19,7 +20,7 @@ const Game = () => {
 	const [rightAnswer, setRightAnswer] = useState(null);
 	const [selectedAnswer, setSelectedAnswer] = useState(null);
 	const [onGetAnswer, setOnGetAnswer] = useState(false);
-	const [scores, setScores] = useState(9);
+	const [scores, setScores] = useState(0);
 	const [isMusic, setIsMusic] = useState(false);
 	const [isSettings, setIsSettings] = useState(false);
 	const [isHint, setIsHint] = useState(false);
@@ -57,9 +58,9 @@ const Game = () => {
 	}, [answers, lang]);
 	
 	useEffect(() => {
-		if (scores >= 10 || scores <= -10) setIsGameOver(true);
-		if (scores >= 10) setStatistics([{ ...statsTemplate, status: true }, ...statistics]);
-		if (scores <= -10) setStatistics([{ ...statsTemplate, status: false }, ...statistics]);
+		if (scores >= 100 || scores <= -100) setIsGameOver(true);
+		if (scores >= 100) setStatistics([{ ...statsTemplate, status: true }, ...statistics]);
+		if (scores <= -100) setStatistics([{ ...statsTemplate, status: false }, ...statistics]);
 	}, [scores]);
 	
 	const setRandomAnswers = () => {
@@ -74,7 +75,7 @@ const Game = () => {
 		setRightAnswer(Math.floor(Math.random() * 4));
 		setIsHint(false);
 		setIsStatsOpened(false);
-		prop && setScores(prev => prev - 2);
+		prop && setScores(prev => prev - 20);
 		prop && setStatsTemplate({ ...statsTemplate, skipped: statsTemplate.skipped + 1 });
 	};
 	
@@ -86,14 +87,14 @@ const Game = () => {
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Right' : 'Правильно' });
 				setStatsTemplate({ ...statsTemplate, rightCount: statsTemplate.rightCount + 1 });
-				setScores(prev => prev + 1);
+				setScores(prev => prev + 10);
 				setTimeout(() => {
 					setOnGetAnswer(false);
 					setLevelResult({ status: false, text: '' });
 					setIsGameOver(false);
 					setIsStatsOpened(true);
 					setIsHint(false);
-					if (scores < 9 && scores > -9) nextLevel();
+					if (scores < 90 && scores > -90) nextLevel();
 				}, 2000)
 			}, 1500);
 		}
@@ -102,12 +103,11 @@ const Game = () => {
 			setTimeout(() => {
 				setLevelResult({ status: true, text: !lang ? 'Wrong' : 'Неправильно' });
 				setStatsTemplate({ ...statsTemplate, wrongCount: statsTemplate.wrongCount + 1 });
-				setScores(prev => prev - 1);
+				setScores(prev => prev - 10);
 				setTimeout(() => {
 					setOnGetAnswer(false);
 					setLevelResult({ status: false, text: '' });
 					setIsGameOver(false);
-					setIsStatsOpened(true);
 				}, 2000)
 			}, 1500);
 		}
@@ -127,7 +127,7 @@ const Game = () => {
 	};
 	
 	const onClickHint = () => {
-		if (!isHint) setScores(prev => prev - 1);
+		if (!isHint) setScores(prev => prev - 10);
 		setIsHint(prev => !prev);
 		setIsStatsOpened(false);
 	};
@@ -152,6 +152,15 @@ const Game = () => {
 		setIsSounds(prev => !prev);
 		setIsMusic(prev => !prev);
 	});
+	
+	const toggleFullscreen = () => {
+		const isInFullScreen = document.fullscreenElement && document.fullscreenElement !== null;
+		const docElm = document.documentElement;
+		if (!isInFullScreen) {
+			if (docElm.requestFullscreen) docElm.requestFullscreen();
+		}
+		else if (document.exitFullscreen) document.exitFullscreen();
+	};
 	
 	return <div className="wrapper">
 		<audio loop ref={musicRef} src={backgroundMusic}/>
@@ -182,7 +191,7 @@ const Game = () => {
 					</div>
 					
 					<div className={`lang_box ${!isSettings && 'hidden'}`}>
-						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
+						<button className={`top__btn ${(scores >= 100 || scores <= -100 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onChangeLang()}
 						>
@@ -194,7 +203,7 @@ const Game = () => {
 				<div className="df">
 					<div className="hint_box">
 						{isHint && <div className={`hint_text ${isSettings && 'hint_absolute'}`}><span>{answers[rightAnswer]?.hint}</span></div>}
-						<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
+						<button className={`top__btn ${(scores >= 100 || scores <= -100 || onGetAnswer === true) ? 'disabled' : null}`}
 						        onMouseDown={clickSound}
 						        onClick={() => onClickHint()}
 						>
@@ -209,7 +218,7 @@ const Game = () => {
 						<Icon.RefreshCcw/>
 					</button>
 					
-					<button className={`top__btn ${(scores >= 10 || scores <= -10 || onGetAnswer === true) ? 'disabled' : null}`}
+					<button className={`top__btn ${(scores >= 100 || scores <= -100 || onGetAnswer === true) ? 'disabled' : null}`}
 					        onMouseDown={clickSound}
 					        onClick={() => nextLevel('skip')}
 					>
@@ -247,9 +256,13 @@ const Game = () => {
 					<button><Icon.List/></button>
 					- Statistics(S)
 				</div>
+				<div className="help_item buttons mb5">
+					<button><Maximize/></button>
+					- On/Off fullscreen
+				</div>
 			</div>}
 			
-			<span className="scores">{scores}/10</span>
+			<span className="scores">{scores}/100</span>
 			
 			<div className="country_field">
 				<img className="country_img"
@@ -268,7 +281,7 @@ const Game = () => {
 					<button onClick={() => onChooseAnswer(index)}
 					        key={index}
 					        onMouseDown={clickSound}
-					        className={`buttons__answer ${(scores >= 10 || scores <= -10 || onGetAnswer) ? 'disabled' : ''}
+					        className={`buttons__answer ${(scores >= 100 || scores <= -100 || onGetAnswer) ? 'disabled' : ''}
 					        ${onGetAnswer && selectedAnswer === index ? 'onGetAnswer_btn' : ''}`}
 					>
 						{item.label}
@@ -284,11 +297,18 @@ const Game = () => {
 				</button>
 				{isStatsOpened && <Statistics rows={statistics}/>}
 			</div>
+			
+			<div className="fullscreen_btn_box buttons">
+				<button onClick={() => toggleFullscreen()}>
+					<Maximize/>
+				</button>
+			</div>
 		</div>
 		
-		{isGameOver ? <div className="game_result game_result__win">
-			{scores >= 10 ? 'You Win' : scores <= -10 ? 'You lost' : null}
-		</div> : null}
+		{(isGameOver && scores >= 100)
+		 ? <div className="game_result game_result__win">You Win</div>
+		 : (isGameOver && scores <= -100 ? <div className="game_result game_result__lost">You lost</div> : null)
+		}
 	</div>;
 };
 
