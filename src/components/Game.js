@@ -14,7 +14,7 @@ const Game = () => {
 	const musicRef = useRef();
 	const [isSounds, setIsSounds] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.1 });
-	const [lang, setLang] = useState(false);
+	const [lang, setLang] = useState(true);
 	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
