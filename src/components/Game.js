@@ -14,7 +14,7 @@ const Game = () => {
 	const musicRef = useRef();
 	const [isSounds, setIsSounds] = useState(false);
 	const [clickSound] = useSound(isSounds ? button : null, { volume: 0.1 });
-	const [lang, setLang] = useState(true);
+	const [lang, setLang] = useState(false);
 	const getRandomCountry = () => Math.floor(Math.random() * (lang ? countriesRU : countriesENG).length);
 	const [answers, setAnswers] = useState([]);
 	const [rightAnswer, setRightAnswer] = useState(null);
@@ -305,8 +305,8 @@ const Game = () => {
 		</div>
 		
 		{(isGameOver && scores >= 100)
-		 ? <div className="game_result game_result__win">{lang ? 'You Win' : 'Победа'}</div>
-		 : (isGameOver && scores <= -100 ? <div className="game_result game_result__lost">{!lang ? 'You lost' : 'Поражение'}</div> : null)
+		 ? <div className="game_result game_result__win">{lang ? 'Победа' : 'You Win'}</div>
+		 : (isGameOver && scores <= -100 ? <div className="game_result game_result__lost">{!lang ? 'Поражение' : 'You lost'}</div> : null)
 		}
 	</div>;
 };
